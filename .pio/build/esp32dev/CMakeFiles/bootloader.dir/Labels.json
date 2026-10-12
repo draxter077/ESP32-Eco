@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/philippe/Documentos/PlatformIO/Projects/ESP32-ECO/.pio/build/esp32dev/CMakeFiles/bootloader"
+		},
+		{
+			"file" : "/home/philippe/Documentos/PlatformIO/Projects/ESP32-ECO/.pio/build/esp32dev/CMakeFiles/bootloader.rule"
+		},
+		{
+			"file" : "/home/philippe/Documentos/PlatformIO/Projects/ESP32-ECO/.pio/build/esp32dev/CMakeFiles/bootloader-complete.rule"
+		},
+		{
+			"file" : "/home/philippe/Documentos/PlatformIO/Projects/ESP32-ECO/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+		},
+		{
+			"file" : "/home/philippe/Documentos/PlatformIO/Projects/ESP32-ECO/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+		},
+		{
+			"file" : "/home/philippe/Documentos/PlatformIO/Projects/ESP32-ECO/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+		},
+		{
+			"file" : "/home/philippe/Documentos/PlatformIO/Projects/ESP32-ECO/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+		},
+		{
+			"file" : "/home/philippe/Documentos/PlatformIO/Projects/ESP32-ECO/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+		},
+		{
+			"file" : "/home/philippe/Documentos/PlatformIO/Projects/ESP32-ECO/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+		},
+		{
+			"file" : "/home/philippe/Documentos/PlatformIO/Projects/ESP32-ECO/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"bootloader"
+		],
+		"name" : "bootloader"
+	}
+}

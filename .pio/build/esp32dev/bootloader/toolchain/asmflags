@@ -1,0 +1,6 @@
+"-specs=/home/philippe/Documentos/PlatformIO/Projects/ESP32-ECO/.pio/build/esp32dev/bootloader/specs/picolibc.specs"
+-Wno-frame-address
+-mlongcalls
+-fno-builtin-memcpy
+-fno-builtin-memset
+-fno-builtin-bzero
