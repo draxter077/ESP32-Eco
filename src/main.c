@@ -1,61 +1,10 @@
-/*
-Quem roda e quando?
-*/
-
+#include "hardware.h"
 
 void app_main(void){
+    hardware_init();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#include "driver/gpio.h"
-#include "esp_adc/adc_oneshot.h"
-
-#define EMERGENCY_BTN           GPIO_NUM_
-#define SELECT_CHARGING_BTN     GPIO_NUM_
-#define SELECT_DISCHARGING_BTN  GPIO_NUM_
-#define RL1_GPIO                GPIO_NUM_
-#define RL2_GPIO                GPIO_NUM_
-#define RL3_GPIO                GPIO_NUM_
-#define RL4_GPIO                GPIO_NUM_
-#define RL5_GPIO                GPIO_NUM_
-#define FAN_GPIO                GPIO_NUM_
-
-#define ADC_UNIT_ID             ADC_UNIT_1
-#define VOLTAGE_GPIO            ADC_CHANNEL_6
-#define CURRENT_GPIO            ADC_CHANNEL_7
-#define ADC_ATTENUATION         ADC_ATTEN_DB_12
-
-static adc_oneshot_unit_handle_t adc1_handle = NULL;
-
-float calculateCurrent(){
-    int raw = 0;
-    ESP_ERROR_CHECK(adc_oneshot_read(adc1_handle, CURRENT_GPIO, &raw));    
-    return ((raw/4095.0)*3.3/10.0)/0.1;
-}
-
-float calculateVoltage(){
-    int raw = 0;
-    ESP_ERROR_CHECK(adc_oneshot_read(adc1_handle, VOLTAGE_GPIO, &raw));
-    return ((raw/4095.0)*3.3)*(39.0+3.3)/3.3;
-}
-void saveTelemetry(float current, float voltage){}
-
-void app_main(){
+void DEPRECATED_app_main(){
     int CHARGING_STATE = 0, DISCHARGING_STATE = 0;
     float current = 0, voltage = 0;
     float operationFinalVoltage = -1;

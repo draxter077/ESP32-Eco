@@ -1,7 +1,3 @@
-/*
-Quais são os números do projeto?
-*/
-
 #pragma once
 
 #include "driver/gpio.h"
@@ -20,21 +16,11 @@ Quais são os números do projeto?
 #define PACK_V_CUTOFF (CELL_V_CUTOFF * CELLS_SERIES)
 
 // 2. PINOS
-
-// Relés
-//   RL1 = liga a bateria ao circuito de descarga
-//   RL2 = liga na fonte de carga da bateria
-//   RL3 = resistor de 4,5 ohm
-//   RL4 = resistor de 18 ohm
-//   RL5 = reserva
-
-// ******** Confirmar no esquematico **********
-
-#define RL1_GPIO GPIO_NUM_26
-#define RL2_GPIO GPIO_NUM_27
-#define RL3_GPIO GPIO_NUM_25
-#define RL4_GPIO GPIO_NUM_33
-#define RL5_GPIO GPIO_NUM_32
+#define RL1_GPIO GPIO_NUM_26 // Interface bateria-resistores na descarga
+#define RL2_GPIO GPIO_NUM_27 // Interface fonte-bateria na carga
+#define RL3_GPIO GPIO_NUM_25 // 2R.S
+#define RL4_GPIO GPIO_NUM_33 // 2R.P
+#define RL5_GPIO GPIO_NUM_32 // 3R.S
 #define FAN_GPIO GPIO_NUM_23
 #define LED_GPIO GPIO_NUM_13
 
