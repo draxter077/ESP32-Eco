@@ -9,6 +9,7 @@
 #include "esp_http_server.h"
 #include "network.h"
 #include "config.h"
+#include "hardware.h"
 
 extern void acionar_emergencia(void);
 extern CSV_FILE_PATH;
@@ -123,11 +124,7 @@ static esp_err_t csv_get_handler(httpd_req_t *req) {
 
 static esp_err_t cmd_get_handler(httpd_req_t *req) {
     char buf[100];
-    if (httpd_req_get_url_query_str(req, buf, sizeof(buf)) == ESP_OK) {
-        if (strstr(buf, "action=stop")) {
-            acionar_emergencia();
-        }
-    }
+    if (httpd_req_get_url_query_str(req, buf, sizeof(buf)) == ESP_OK && strstr(buf, "action=stop")) emergency_valve();
     httpd_resp_send(req, "OK", 2);
     return ESP_OK;
 }
