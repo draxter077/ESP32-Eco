@@ -1,2 +1,2 @@
-source /home/philippe/Documentos/PlatformIO/Projects/ESP32-ECO/.pio/build/esp32dev/bootloader/gdbinit/symbols
-source /home/philippe/Documentos/PlatformIO/Projects/ESP32-ECO/.pio/build/esp32dev/bootloader/gdbinit/connect
+source C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/bootloader/gdbinit/symbols
+source C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/bootloader/gdbinit/connect

@@ -12,4 +12,5 @@ idf_component_register(
         driver 
         esp_adc 
         esp_driver_gpio
+        SSD1306
 )

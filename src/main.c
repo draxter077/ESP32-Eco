@@ -2,6 +2,26 @@
 Quem roda e quando?
 */
 
+
+void app_main(void){
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #include "driver/gpio.h"
 #include "esp_adc/adc_oneshot.h"
 
