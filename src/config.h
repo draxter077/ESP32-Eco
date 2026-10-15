@@ -36,20 +36,19 @@ Quais são os números do projeto?
 #define RL4_GPIO GPIO_NUM_33
 #define RL5_GPIO GPIO_NUM_32
 #define FAN_GPIO GPIO_NUM_23
-#define LED_ERROR_GPIO GPIO_NUM_13
-#define VOLTAGE_GPIO GPIO_NUM_0
-#define CURRENT_GPIO GPIO_NUM_0
+#define LED_GPIO GPIO_NUM_13
 
-// Nível que LIGA o relé: 1 = módulo ativo em nível alto, 0 = ativo em nível
-// baixo
 #define RELAY_ACTIVE_LEVEL 1
 
-// Botões
-// ****** Conferir depois *************
 #define EMERGENCY_BTN_GPIO GPIO_NUM_4
 #define CHARGE_BTN_GPIO GPIO_NUM_16
 #define DISCHARGE_BTN_GPIO GPIO_NUM_17
 #define BTN_DEBOUNCE_MS 30
+
+#define ADC_UNIT_ID             ADC_UNIT_1
+#define VOLTAGE_GPIO            ADC_CHANNEL_6
+#define CURRENT_GPIO            ADC_CHANNEL_7
+#define ADC_ATTENUATION         ADC_ATTEN_DB_12
 
 // 3. SENSORES
 
