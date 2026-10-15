@@ -2,6 +2,8 @@
 
 void app_main(void){
     hardware_init();
+
+    while(1){}
 }
 
 void DEPRECATED_app_main(){
