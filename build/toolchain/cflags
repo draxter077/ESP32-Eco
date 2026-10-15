@@ -1,0 +1,6 @@
+-Wno-frame-address
+-mlongcalls
+-fno-builtin-memcpy
+-fno-builtin-memset
+-fno-builtin-bzero
+"-specs=/home/vinicius/Faculdade/Eco/Version2/ESP32-Eco/build/specs/picolibc.specs"

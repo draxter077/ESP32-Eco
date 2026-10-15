@@ -1,0 +1,2 @@
+source /home/vinicius/Faculdade/Eco/Version2/ESP32-Eco/build/bootloader/gdbinit/symbols
+source /home/vinicius/Faculdade/Eco/Version2/ESP32-Eco/build/bootloader/gdbinit/connect
