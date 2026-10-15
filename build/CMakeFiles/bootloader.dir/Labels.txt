@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/vinicius/Faculdade/Eco/Version2/ESP32-Eco/build/CMakeFiles/bootloader
+/home/vinicius/Faculdade/Eco/Version2/ESP32-Eco/build/CMakeFiles/bootloader.rule
+/home/vinicius/Faculdade/Eco/Version2/ESP32-Eco/build/CMakeFiles/bootloader-complete.rule
+/home/vinicius/Faculdade/Eco/Version2/ESP32-Eco/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/vinicius/Faculdade/Eco/Version2/ESP32-Eco/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/vinicius/Faculdade/Eco/Version2/ESP32-Eco/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/vinicius/Faculdade/Eco/Version2/ESP32-Eco/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/vinicius/Faculdade/Eco/Version2/ESP32-Eco/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/vinicius/Faculdade/Eco/Version2/ESP32-Eco/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/vinicius/Faculdade/Eco/Version2/ESP32-Eco/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

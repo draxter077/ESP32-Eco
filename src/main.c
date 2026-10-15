@@ -1,3 +1,7 @@
+/*
+Quem roda e quando?
+*/
+
 #include "driver/gpio.h"
 #include "esp_adc/adc_oneshot.h"
 
