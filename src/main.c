@@ -2,11 +2,8 @@
 Quem roda e quando?
 */
 
-#include "network.h"
 
 void app_main(void){
-    wifi_init_softwap();
-    start_web_server();
 }
 
 

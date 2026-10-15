@@ -37,6 +37,8 @@ Quais são os números do projeto?
 #define RL5_GPIO GPIO_NUM_32
 #define FAN_GPIO GPIO_NUM_23
 #define LED_ERROR_GPIO GPIO_NUM_13
+#define VOLTAGE_GPIO GPIO_NUM_0
+#define CURRENT_GPIO GPIO_NUM_0
 
 // Nível que LIGA o relé: 1 = módulo ativo em nível alto, 0 = ativo em nível
 // baixo
@@ -63,9 +65,7 @@ Quais são os números do projeto?
 #define DISCHARGE_MIN_FINAL_V 9.0f
 #define DISCHARGE_MAX_FINAL_V 11.5f
 
--
 // 4. SEGURANÇA
-
 #define MAX_VOLTAGE 13.0f
 #define MIN_VOLTAGE 7.5f
 #define MAX_CURRENT 3.5f
@@ -73,14 +73,12 @@ Quais são os números do projeto?
 #define SAFETY_CONFIRM_SAMPLES 3
 
 // 5. CARGA
-
 #define CHARGE_DONE_VOLTAGE 12.5f
 #define CHARGE_CUTOFF_CURRENT 0.03f
 #define CHARGE_CUTOFF_TIME_S 5
 #define CHARGE_MAX_TIME_S (8 * 3600)
 
 // 6. DESCARGA
-
 #define BANK_V_HIGH_ENTER 11.0f // V >= 11,0: só 4,5 ohm
 #define BANK_V_LOW_ENTER 10.8f  // V <  10,8: 4,5 ohm paralelo 18 ohm = 3,6 ohm
 #define BANK_MIN_SWITCH_MS 5000 // tempo mínimo entre trocas de degrau
@@ -88,36 +86,29 @@ Quais são os números do projeto?
 #define DISCHARGE_MAX_TIME_S (8 * 3600)
 
 // 7. TAREFAS (em ms)
-
 #define MEASURE_PERIOD_MS 20
 #define CONTROL_PERIOD_MS 100
 #define INTERFACE_PERIOD_MS 500
-
 #define TASK_MEASURE_STACK 4096
 #define TASK_CONTROL_STACK 4096
 #define TASK_INTERFACE_STACK 6144
-
 #define TASK_MEASURE_PRIO 6 // maior número = maior prioridade
 #define TASK_CONTROL_PRIO 5
 #define TASK_INTERFACE_PRIO 3
 
 // 8. REDE
-
-#define WIFI_STA_SSID "" // vazio = vai direto para o AP
-#define WIFI_STA_PASSWORD ""
-#define WIFI_STA_TIMEOUT_MS 10000
-#define WIFI_AP_SSID "Carregador de Bateria"
-#define WIFI_AP_PASSWORD "123456789"
-#define MDNS_HOSTNAME "bateria" // acesso: http://bateria.local
+#define WIFI_SSID "Carregador de Bateria"
+#define WIFI_PASSWORD "123456789"
+#define MDNS_HOSTNAME "bateria"
+#define WIFI_CHANNEL 1
+#define WIFI_MAX_CONN 2
 
 // 9. LOG E DISPLAY
-
 #define LOG_MOUNT_POINT "/littlefs"
 #define LOG_FILE_PATH "/littlefs/sessao.csv"
 #define LOG_PERIOD_MS 1000
 #define LOG_MIN_FREE_BYTES (100 * 1024) // não inicia a sessão com menos espaço
 #define LOG_CSV_HEADER "tempo_s,estado,tensao_V,corrente_A,temp_C\n"
-
 #define DISPLAY_I2C_ADDR 0x3C
 #define DISPLAY_WIDTH 128 // ******* Ajustar numeros depois ******
 #define DISPLAY_HEIGHT 64

@@ -8,11 +8,7 @@
 #include "lwip/sys.h"
 #include "esp_http_server.h"
 #include "network.h"
-
-#define EXAMPLE_ESP_WIFI_SSID      "EcoOctano_Telemetria"
-#define EXAMPLE_ESP_WIFI_PASS      "12345678"
-#define EXAMPLE_ESP_WIFI_CHANNEL   1
-#define EXAMPLE_MAX_STA_CONN       4
+#include "config.h"
 
 extern void acionar_emergencia(void);
 extern CSV_FILE_PATH;
@@ -21,35 +17,6 @@ typedef struct {
     float voltage;
     float current;
 } TelemetryBinarySample;
-
-// Inicializa o wifi
-void wifi_init_softap(void){
-    ESP_ERROR_CHECK(esp_netif_init());
-    ESP_ERROR_CHECK(esp_event_loop_create_default());
-    esp_netif_create_default_wifi_ap();
-
-    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
-    ESP_ERROR_CHECK(esp_wifi_init(&cfg));
-
-    wifi_config_t wifi_config = {
-        .ap = {
-            .ssid = EXAMPLE_ESP_WIFI_SSID,
-            .ssid_len = strlen(EXAMPLE_ESP_WIFI_SSID),
-            .channel = EXAMPLE_ESP_WIFI_CHANNEL,
-            .password = EXAMPLE_ESP_WIFI_PASS,
-            .max_connection = EXAMPLE_MAX_STA_CONN,
-            .authmode = WIFI_AUTH_WPA2_PSK,
-        },
-    };
-    if(strlen(EXAMPLE_ESP_WIFI_PASS) == 0) wifi_config.ap.authmode = WIFI_AUTH_OPEN;
-
-    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
-    ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_AP, &wifi_config));
-    ESP_ERROR_CHECK(esp_wifi_start());
-}
-//
-
-
 
 // Gestão do  WebServer
 const char* html_template = 
@@ -165,7 +132,7 @@ static esp_err_t cmd_get_handler(httpd_req_t *req) {
     return ESP_OK;
 }
 
-httpd_handle_t start_webserver(void) {
+httpd_handle_t network_startwebserver(void) {
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
     httpd_handle_t server = NULL;
     
@@ -181,5 +148,33 @@ httpd_handle_t start_webserver(void) {
         httpd_register_uri_handler(server, &cmd_uri);
     }
     return server;
+}
+//
+
+// Inicializa o wifi
+void network_init(void){
+    ESP_ERROR_CHECK(esp_netif_init());
+    ESP_ERROR_CHECK(esp_event_loop_create_default());
+    esp_netif_create_default_wifi_ap();
+
+    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+    ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+
+    wifi_config_t wifi_config = {
+        .ap = {
+            .ssid = WIFI_SSID,
+            .ssid_len = strlen(WIFI_SSID),
+            .channel = WIFI_CHANNEL,
+            .password = WIFI_PASSWORD,
+            .max_connection = WIFI_MAX_CONN,
+            .authmode = WIFI_AUTH_WPA2_PSK,
+        },
+    };
+    if(strlen(WIFI_PASSWORD) == 0) wifi_config.ap.authmode = WIFI_AUTH_OPEN;
+
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
+    ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_AP, &wifi_config));
+    ESP_ERROR_CHECK(esp_wifi_start());
+    network_startwebserver();
 }
 //
