@@ -2,6 +2,8 @@
 Quem roda e quando?
 */
 
+// teste
+
 #include "driver/gpio.h"
 #include "esp_adc/adc_oneshot.h"
 
