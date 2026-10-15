@@ -2,7 +2,28 @@
 Quem roda e quando?
 */
 
-// teste
+#include "network.h"
+
+void app_main(void){
+    wifi_init_softwap();
+    start_web_server();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #include "driver/gpio.h"
 #include "esp_adc/adc_oneshot.h"
