@@ -9,7 +9,7 @@
 //   site / botões         -> control_request()  (só PEDE; control_step executa)
 //
 // Estados:  IDLE -> CHARGING / DISCHARGING -> FINISHED
-//           qualquer estado -> ERROR (só sai com CMD_RESET_ERROR)
+//           qualquer estado -> ERROR
 // =============================================================================
 #include <math.h>
 #include <string.h>

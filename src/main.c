@@ -2,14 +2,14 @@
 // main.c  -  "Quem roda e quando?"
 //
 // Liga os módulos e cria as 3 tarefas. Não tem lógica de decisão: quem decide
-// é o control.c. Por isso este arquivo não precisa de main.h.
+// é o control.c.
 //
 //   task_measure   (20 ms)   mede, integra Ah/Wh e confere a segurança
 //   task_control   (100 ms)  executa a máquina de estados
-//   task_interface (500 ms)  display, site (WebSocket) e log
+//   task_interface (500 ms)  display, site e log
 //
-// O Wi-Fi e o servidor HTTP rodam sozinhos, em tarefas do próprio ESP-IDF.
 // =============================================================================
+
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_log.h"
