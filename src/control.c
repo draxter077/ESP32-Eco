@@ -11,6 +11,7 @@
 // Estados:  IDLE -> CHARGING / DISCHARGING -> FINISHED
 //           qualquer estado -> ERROR
 // =============================================================================
+
 #include <math.h>
 #include <string.h>
 

@@ -5,7 +5,7 @@
 // é o control.c.
 //
 //   task_measure   (20 ms)   mede, integra Ah/Wh e confere a segurança
-//   task_control   (100 ms)  executa a máquina de estados
+//   task_control   (100 ms)  executa a máquina de estados e resistores
 //   task_interface (500 ms)  display, site e log
 //
 // =============================================================================
