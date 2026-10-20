@@ -11,10 +11,10 @@ Quais são os números do projeto?
 // 1. PACK DE BATERIAS
 
 // ************* Ver valores certinho **********
-#define CELLS_SERIES 3     // Numero de celulas em serie
-#define CELL_V_FULL 4.2f   // V por célula, carga completa
+#define CELLS_SERIES 3 // Numero de celulas em serie (Mudar para receber input)
 #define CELL_V_CUTOFF 3.0f // V por célula, corte padrão da descarga
 #define CELL_V_MIN 2.5f    // V por célula, mínimo absoluto
+#define CELL_V_FULL 4.2f   // V por célula, carga completa
 
 #define PACK_V_FULL (CELL_V_FULL * CELLS_SERIES)
 #define PACK_V_CUTOFF (CELL_V_CUTOFF * CELLS_SERIES)
@@ -45,10 +45,10 @@ Quais são os números do projeto?
 #define DISCHARGE_BTN_GPIO GPIO_NUM_17
 #define BTN_DEBOUNCE_MS 30
 
-#define ADC_UNIT_ID             ADC_UNIT_1
-#define VOLTAGE_GPIO            ADC_CHANNEL_6
-#define CURRENT_GPIO            ADC_CHANNEL_7
-#define ADC_ATTENUATION         ADC_ATTEN_DB_12
+#define ADC_UNIT_ID ADC_UNIT_1
+#define VOLTAGE_GPIO ADC_CHANNEL_6
+#define CURRENT_GPIO ADC_CHANNEL_7
+#define ADC_ATTENUATION ADC_ATTEN_DB_12
 
 // 3. SENSORES
 
@@ -61,25 +61,29 @@ Quais são os números do projeto?
 #define FAN_OFF_TEMP_C 35.0f
 
 // Potenciômetro marca a tensão final na descarga
+// ******************** MUDAR ********************
 #define DISCHARGE_MIN_FINAL_V 9.0f
 #define DISCHARGE_MAX_FINAL_V 11.5f
 
 // 4. SEGURANÇA
-#define MAX_VOLTAGE 13.0f
-#define MIN_VOLTAGE 7.5f
-#define MAX_CURRENT 3.5f
+#define MAX_VOLTAGE 13.0f // ************ MUDAR ****************
+#define MIN_VOLTAGE 7.5f  // ************ MUDAR ****************
+#define MAX_CURRENT 3.2f
 #define MAX_TEMP 60.0f
 #define SAFETY_CONFIRM_SAMPLES 3
 
 // 5. CARGA
-#define CHARGE_DONE_VOLTAGE 12.5f
+#define CHARGE_DONE_VOLTAGE 12.5f // ********* MUDAR ****************
 #define CHARGE_CUTOFF_CURRENT 0.03f
 #define CHARGE_CUTOFF_TIME_S 5
 #define CHARGE_MAX_TIME_S (8 * 3600)
 
 // 6. DESCARGA
-#define BANK_V_HIGH_ENTER 11.0f // V >= 11,0: só 4,5 ohm
-#define BANK_V_LOW_ENTER 10.8f  // V <  10,8: 4,5 ohm paralelo 18 ohm = 3,6 ohm
+#define BANK_V_HIGH_ENTER                                                      \
+  11.0f // V >= 11,0: só 4,5 ohm  // ************ MUDAR ****************
+#define BANK_V_LOW_ENTER                                                       \
+  10.8f // V <  10,8: 4,5 ohm paralelo 18 ohm = 3,6 ohm  // ************ MUDAR
+        // ****************
 #define BANK_MIN_SWITCH_MS 5000 // tempo mínimo entre trocas de degrau
 #define DISCHARGE_CONFIRM_SAMPLES 5
 #define DISCHARGE_MAX_TIME_S (8 * 3600)
@@ -112,16 +116,16 @@ Quais são os números do projeto?
 #define DISPLAY_WIDTH 128 // ******* Ajustar numeros depois ******
 #define DISPLAY_HEIGHT 64
 
-    // TIPOS E STRUCTS
+// TIPOS E STRUCTS
 
-    // Estados da máquina de estados (control.c)
-    typedef enum {
-      STATE_IDLE = 0,    // parado, esperando comando
-      STATE_CHARGING,    // carregando
-      STATE_DISCHARGING, // descarregando
-      STATE_FINISHED,    // terminou, CSV disponível
-      STATE_ERROR        // proteção disparada, tudo desligado
-    } state_t;
+// Estados da máquina de estados (control.c)
+typedef enum {
+  STATE_IDLE = 0,    // parado, esperando comando
+  STATE_CHARGING,    // carregando
+  STATE_DISCHARGING, // descarregando
+  STATE_FINISHED,    // terminou, CSV disponível
+  STATE_ERROR        // proteção disparada, tudo desligado
+} state_t;
 
 // Erros
 typedef enum {
