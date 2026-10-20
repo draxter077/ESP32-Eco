@@ -174,4 +174,3 @@ void network_init(void){
     ESP_ERROR_CHECK(esp_wifi_start());
     network_startwebserver();
 }
-//
