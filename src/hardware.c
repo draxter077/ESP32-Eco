@@ -23,3 +23,6 @@ int menuSelectBattery(void){
 int menuSelectFinalVoltage(void){
     return 0;
 }
+
+void hardwareInit(void){
+}
