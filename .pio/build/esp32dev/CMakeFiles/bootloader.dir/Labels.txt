@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/CMakeFiles/bootloader
+/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/CMakeFiles/bootloader.rule
+/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/CMakeFiles/bootloader-complete.rule
+/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

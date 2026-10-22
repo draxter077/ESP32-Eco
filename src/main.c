@@ -1,29 +1,37 @@
 #include "hardware.h"
 #include "control.h"
 #include "menu.h"
+#include "display.h"
+#include "driver/gpio.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
 void app_main(void){
     // Inicializa hardware
-    // Inicializa LAN
-    // Inicializa display
+    hardwareInit();
 
-    // Definições de estados e auxiliares
+    // Definicoes de estados e auxiliares
     int CHARGING_STATE = 0, DISCHARGING_STATE = 0;
     float nowCurrent = 0, nowVoltage = 0, nowTemperature = 0;
     float operationFinalVoltage = 0;
     int batterySelected = 0;
+    int lastEnterBtnState = 0, actualBtnState = 0;
 
-    // Display inicial
+    displayInitial();
     while(1){
-        // Estado CARGA/DESCARGA
         if(CHARGING_STATE || DISCHARGING_STATE){
-            operationCare(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowCurrent, &nowVoltage, &nowTemperature, &operationFinalVoltage)
+            operationCare(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowCurrent, &nowVoltage, &nowTemperature, &operationFinalVoltage);
         }
-        // Estado MENU
         else{
-            if(gpio_get_level(ENTER_BTN)){
-                menu(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowVoltage, &operationFinalVoltage)
+            actualBtnState = gpio_get_level(ENTER_BTN_GPIO);
+            if(!actualBtnState && lastEnterBtnState){
+                menu(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowVoltage, &operationFinalVoltage);
+            }
+            else{
+                lastEnterBtnState = actualBtnState;
             }
         }
+
+        vTaskDelay(pdMS_TO_TICKS(10));
     }
 }
