@@ -68,8 +68,9 @@ float calculateTemperature(void){
 int menuSelectBattery(void){
     int raw = 0;
     adc_oneshot_read(adc1_handle, POTENCIOMETER_GPIO, &raw);
-    displayBatterySelect((int) 5*(raw/4095.0));
-    return raw;
+    int readValue = (int) (5-1)*(raw/4095.0);
+    displayBatterySelect(readValue);
+    return readValue;
 }
 
 int menuSelectFinalVoltage(int batterySelected, float nowVoltage){

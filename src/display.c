@@ -262,7 +262,7 @@ void displayInitial(void){
 
 void displayBatterySelect(int raw){
     char buffer[32];
-    snprintf(buffer, sizeof(buffer), "%d: nome", raw);
+    snprintf(buffer, sizeof(buffer), "%d: %s", raw, batteries[raw].name);
     displayClear();
     displayDrawString(0,20,"Bateria escolhida");
     displayDrawString(0,30,buffer);
