@@ -26,6 +26,8 @@ void app_main(void){
             actualBtnState = gpio_get_level(ENTER_BTN_GPIO);
             if(!actualBtnState && lastEnterBtnState){
                 menu(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowVoltage, &operationFinalVoltage);
+                lastEnterBtnState = 0;
+                displayInitial();
             }
             else{
                 lastEnterBtnState = actualBtnState;
