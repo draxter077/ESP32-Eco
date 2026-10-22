@@ -1,8 +1,8 @@
-# Install script for directory: /home/philippe/.platformio/packages/framework-espidf/components/esp_libc
+# Install script for directory: C:/Users/PPrestes/.platformio/packages/framework-espidf/components/esp_libc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/usr/local")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/ESP32-Eco")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,11 +34,11 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-objdump")
+  set(CMAKE_OBJDUMP "C:/Users/PPrestes/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-objdump.exe")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/esp-idf/esp_libc/src/port/cmake_install.cmake")
+  include("C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/esp-idf/esp_libc/src/port/cmake_install.cmake")
 endif()
 

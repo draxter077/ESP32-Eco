@@ -25,4 +25,4 @@ float calculateCurrent(void);
 float calculateVoltage(int batterySelected);
 float calculateTemperature(void);
 int menuSelectBattery(void);
-int menuSelectFinalVoltage(void);
+int menuSelectFinalVoltage(int batterySelected, float nowVoltage);

@@ -1,1 +1,1 @@
-void menu(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySelected, float* nowVoltage, float* operationFinalVoltage);
+void menu(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySelected, float* nowVoltage, float* operationFinalVoltage, float* operationInitialVoltage);

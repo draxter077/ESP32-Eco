@@ -1,5 +1,6 @@
 #include "hardware.h"
 #include "display.h"
+#include "config.h"
 
 adc_oneshot_unit_handle_t adc1_handle = NULL;
 
@@ -71,9 +72,11 @@ int menuSelectBattery(void){
     return raw;
 }
 
-int menuSelectFinalVoltage(void){
+int menuSelectFinalVoltage(int batterySelected, float nowVoltage){
     int raw = 0;
+    batteryData b = batteries[batterySelected];
     adc_oneshot_read(adc1_handle, POTENCIOMETER_GPIO, &raw);
-    displayFinalVoltageSelect((int) 42*(raw/4095.0));
+    int readValue = (int) (b.maxVoltage - b.minVoltage)*(raw/4095.0) + b.minVoltage;
+    displayFinalVoltageSelect(readValue, batterySelected, nowVoltage);
     return raw;
 }

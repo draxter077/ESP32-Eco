@@ -1,4 +1,5 @@
 #include "display.h"
+#include "config.h"
 #include <stdio.h>
 #include <string.h>
 #include "driver/i2c_master.h"
@@ -253,26 +254,53 @@ void displayRefresh(void) {
 
 void displayInitial(void){
     displayClear();
-    displayDrawString(0,0,"28.5A 12.5V 54%");
-    displayDrawString(0,20,"Linha 1");
-    displayDrawString(0,30,"Linha 2");
-    displayDrawString(0,40,"Linha 3");
-    displayDrawString(0,50,"Linha 4");
+    displayDrawString(0,20,"Sistema G2");
+    displayDrawString(0,30,"Seja bem-vindo");
+    displayDrawString(0,40,"Aperte o botão Enter para continuar");
     displayRefresh();
 }
 
 void displayBatterySelect(int raw){
     char buffer[32];
-    snprintf(buffer, sizeof(buffer), "BATERIA: %d", raw);
+    snprintf(buffer, sizeof(buffer), "%d: nome", raw);
     displayClear();
-    displayDrawString(0, 28, buffer);
+    displayDrawString(0,20,"Bateria escolhida");
+    displayDrawString(0,30,buffer);
     displayRefresh();
 }
 
-void displayFinalVoltageSelect(int raw){
+void displayFinalVoltageSelect(int raw, int batterySelected, float nowVoltage){
     char buffer[32];
-    snprintf(buffer, sizeof(buffer), "VOLTAGEM: %d", raw);
+    batteryData b = batteries[batterySelected];
     displayClear();
-    displayDrawString(0, 28, buffer);
+    snprintf(buffer, sizeof(buffer), "-A | -V | %.0f%%", (1 - (b.maxVoltage - nowVoltage))/(b.maxVoltage));
+    displayDrawString(0,0,buffer);
+    displayDrawString(0,20,"Voltagem final");
+    snprintf(buffer, sizeof(buffer), "%dV", raw);
+    displayDrawString(0,30,buffer);
+    displayRefresh();
+}
+
+void displayInOperation(int isCharging, int isDischarging, float initialVoltage, float finalVoltage, float nowVoltage, float nowCurrent, int batterySelected, char* stateText){
+    float porcentage;
+    batteryData b = batteries[batterySelected];
+    displayClear();
+
+    char buffer[32];
+    snprintf(buffer, sizeof(buffer), "%.1fA | %.1fV | %.0f%%", nowCurrent, nowVoltage, (1 - (b.maxVoltage - nowVoltage))/(b.maxVoltage));
+    displayDrawString(0,0,buffer);
+    if(isCharging){
+        displayDrawString(0,20,"CHARGING");
+        porcentage = ((nowVoltage - initialVoltage)/(finalVoltage - initialVoltage))*100;
+    }
+    else if(isDischarging){
+        displayDrawString(0,20,"DISCHARGING");
+        porcentage = ((initialVoltage - nowVoltage)/(initialVoltage - finalVoltage))*100;
+    }
+
+    snprintf(buffer, sizeof(buffer), "%.2f", porcentage);
+    displayDrawString(0,30,buffer);
+    snprintf(buffer, sizeof(buffer), "%s", stateText);
+    displayDrawString(0,50,buffer);
     displayRefresh();
 }
