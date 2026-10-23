@@ -13,34 +13,43 @@ void menu(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySelected, flo
         actualBtnState = gpio_get_level(ENTER_BTN_GPIO);
         if(!actualBtnState && lastEnterBtnState){
             lastEnterBtnState = 0;
-            *nowVoltage = calculateVoltage(*batterySelected);
+            *nowVoltage = calculateVoltage();
             *operationInitialVoltage = *nowVoltage;
             startMenuTime = esp_timer_get_time();
             while(1){
-                *operationFinalVoltage = menuSelectFinalVoltage(*batterySelected);
+                *operationFinalVoltage = menuSelectFinalVoltage(*batterySelected, *nowVoltage);
                 actualBtnState = gpio_get_level(ENTER_BTN_GPIO);
                 if(!actualBtnState && lastEnterBtnState && *operationFinalVoltage != *nowVoltage){
+                    lastEnterBtnState = 0;
                     startMenuTime = esp_timer_get_time();
+                    displayPreOperation();
                     while(1){
+                        actualBtnState = gpio_get_level(ENTER_BTN_GPIO);
                         if(esp_timer_get_time() - startMenuTime > 5*1000*1000){
                             if(*operationFinalVoltage > *nowVoltage){
-                                startCharge(CHARGING_STATE);
+                                int TYPE = 0;
+                                if(*batterySelected == 0) TYPE = 42;
+                                else if(*batterySelected == 1) TYPE = 12;
+                                startCharge(CHARGING_STATE, TYPE);
                             }
                             else if(*operationFinalVoltage < *nowVoltage){
                                 startDischarge(DISCHARGING_STATE);
                             }
                             break;
                         }
-                        else if(gpio_get_level(ENTER_BTN_GPIO)){
+                        else if(!actualBtnState && lastEnterBtnState){
                             displayInitial();
                             break;
+                        }
+                        else{
+                            lastEnterBtnState = actualBtnState;
                         }
 
                         vTaskDelay(pdMS_TO_TICKS(10));
                     }
                     break;
                 }
-                else if(esp_timer_get_time() - startMenuTime > 5*1000*1000){
+                else if(esp_timer_get_time() - startMenuTime > 20*1000*1000){
                     displayInitial();
                     break;
                 }
@@ -52,7 +61,7 @@ void menu(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySelected, flo
             }
             break;
         }
-        else if(esp_timer_get_time() - startMenuTime > 5*1000*1000){
+        else if(esp_timer_get_time() - startMenuTime > 20*1000*1000){
             displayInitial();
             break;
         }

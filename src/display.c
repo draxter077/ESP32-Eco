@@ -15,7 +15,7 @@ static i2c_master_bus_handle_t bus_handle = NULL;
 static i2c_master_dev_handle_t dev_handle = NULL;
 
 #define OLED_WIDTH  128
-#define OLED_HEIGHT 64 // Corrigido para 64 pixels conforme o código Arduino
+#define OLED_HEIGHT 64
 
 static uint8_t oled_buffer[OLED_WIDTH * (OLED_HEIGHT / 8)];
 
@@ -122,7 +122,6 @@ static const uint8_t* get_font_glyph(uint32_t codepoint) {
         return font_ascii[codepoint - 32];
     }
 
-    // Acentos em português mapeados de forma segura
     switch (codepoint) {
         case 0x00C7: case 0x00E7: { static const uint8_t g[] = {0x38, 0x44, 0x44, 0x44, 0x22, 0x02, 0x04, 0x00}; return g; } // Ç / ç
         case 0x00C3: case 0x00E3: { static const uint8_t g[] = {0x04, 0x02, 0x38, 0x44, 0x44, 0x44, 0x38, 0x00}; return g; } // Ã / ã
@@ -134,7 +133,7 @@ static const uint8_t* get_font_glyph(uint32_t codepoint) {
         case 0x00DA: case 0x00FA: { static const uint8_t g[] = {0x02, 0x04, 0x3C, 0x40, 0x40, 0x20, 0x7C, 0x00}; return g; } // Ú / ú
         case 0x00CA: case 0x00EA: { static const uint8_t g[] = {0x04, 0x02, 0x38, 0x54, 0x54, 0x54, 0x18, 0x00}; return g; } // Ê / ê
         case 0x00D4: case 0x00F4: { static const uint8_t g[] = {0x04, 0x02, 0x38, 0x44, 0x44, 0x44, 0x38, 0x00}; return g; } // Ô / ô
-        default: return font_ascii[0]; // Retorna espaço para caracteres desconhecidos
+        default: return font_ascii[0];
     }
 }
 
@@ -160,7 +159,6 @@ void displayInit(void) {
     };
     i2c_master_bus_add_device(bus_handle, &dev_config, &dev_handle);
 
-    // Comandos de inicialização padrão do SSD1306 para 128x64 pixels (mesmo padrão da Adafruit)
     uint8_t init_cmds[] = {
         0x00, 
         0xAE,             // Display OFF
@@ -196,17 +194,14 @@ void displayDrawString(int x, int y, const char *str){
         int bytes_read = 1;
 
         if (*p < 0x80) {
-            // ASCII padrão (0 a 127)
             codepoint = *p;
             bytes_read = 1;
         } 
         else if ((*p & 0xE0) == 0xC0 && (*(p + 1) & 0xC0) == 0x80) {
-            // UTF-8 de 2 bytes (ex: Ç, Ã, Á, É salvos em UTF-8)
             codepoint = ((*p & 0x1F) << 6) | (*(p + 1) & 0x3F);
             bytes_read = 2;
         } 
         else {
-            // Compatibilidade com ANSI / Windows-1252 (byte único estendido)
             codepoint = *p;
             bytes_read = 1;
         }
@@ -256,7 +251,7 @@ void displayInitial(void){
     displayClear();
     displayDrawString(0,20,"Sistema G2");
     displayDrawString(0,30,"Seja bem-vindo");
-    displayDrawString(0,40,"Aperte o botão Enter para continuar");
+    displayDrawString(0,40,"Aperte Enter");
     displayRefresh();
 }
 
@@ -264,7 +259,7 @@ void displayBatterySelect(int raw){
     char buffer[32];
     snprintf(buffer, sizeof(buffer), "%d: %s", raw, batteries[raw].name);
     displayClear();
-    displayDrawString(0,20,"Bateria escolhida");
+    displayDrawString(0,20,"Escolha bateria");
     displayDrawString(0,30,buffer);
     displayRefresh();
 }
@@ -273,22 +268,22 @@ void displayFinalVoltageSelect(int raw, int batterySelected, float nowVoltage){
     char buffer[32];
     batteryData b = batteries[batterySelected];
     displayClear();
-    snprintf(buffer, sizeof(buffer), "-A | -V | %.0f%%", (1 - (b.maxVoltage - nowVoltage))/(b.maxVoltage));
-    displayDrawString(0,0,buffer);
     displayDrawString(0,20,"Voltagem final");
     snprintf(buffer, sizeof(buffer), "%dV", raw);
     displayDrawString(0,30,buffer);
+
+    float porcentage = (nowVoltage/b.maxVoltage)*100;
+    snprintf(buffer, sizeof(buffer), "-A %.1fV %.0f%%", nowVoltage, porcentage);
+    displayDrawString(0,50,buffer);
     displayRefresh();
 }
 
-void displayInOperation(int isCharging, int isDischarging, float initialVoltage, float finalVoltage, float nowVoltage, float nowCurrent, int batterySelected, char* stateText){
-    float porcentage;
+void displayInOperation(int isCharging, int isDischarging, float initialVoltage, float finalVoltage, float nowVoltage, float nowCurrent, int batterySelected){
+    float porcentage = 0.00;
     batteryData b = batteries[batterySelected];
     displayClear();
 
     char buffer[32];
-    snprintf(buffer, sizeof(buffer), "%.1fA | %.1fV | %.0f%%", nowCurrent, nowVoltage, (1 - (b.maxVoltage - nowVoltage))/(b.maxVoltage));
-    displayDrawString(0,0,buffer);
     if(isCharging){
         displayDrawString(0,20,"CHARGING");
         porcentage = ((nowVoltage - initialVoltage)/(finalVoltage - initialVoltage))*100;
@@ -298,9 +293,18 @@ void displayInOperation(int isCharging, int isDischarging, float initialVoltage,
         porcentage = ((initialVoltage - nowVoltage)/(initialVoltage - finalVoltage))*100;
     }
 
-    snprintf(buffer, sizeof(buffer), "%.2f", porcentage);
+    snprintf(buffer, sizeof(buffer), "%.1f%%", porcentage);
     displayDrawString(0,30,buffer);
-    snprintf(buffer, sizeof(buffer), "%s", stateText);
+    
+    porcentage = (nowVoltage/b.maxVoltage)*100;
+    snprintf(buffer, sizeof(buffer), "%.1fA %.1fV %.0f%%", nowCurrent, nowVoltage, porcentage);
     displayDrawString(0,50,buffer);
+    displayRefresh();
+}
+
+void displayPreOperation(void){
+    displayClear();
+    displayDrawString(0,20,"Em 5s inicia a operação");
+    displayDrawString(0,30,"Cancele em Enter");
     displayRefresh();
 }

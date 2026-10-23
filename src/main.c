@@ -13,7 +13,7 @@ void app_main(void){
 
     // Definicoes de estados e auxiliares
     int CHARGING_STATE = 0, DISCHARGING_STATE = 0;
-    float nowCurrent = 0, nowVoltage = 0, nowTemperature = 0;
+    float nowCurrent = 0, nowVoltage = 0;
     float operationFinalVoltage = 0, operationInitialVoltage = 0;
     int batterySelected = 0;
     int lastEnterBtnState = 0, actualBtnState = 0;
@@ -22,7 +22,7 @@ void app_main(void){
     displayInitial();
     while(1){
         if(CHARGING_STATE || DISCHARGING_STATE){
-            operationCare(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowCurrent, &nowVoltage, &nowTemperature, &operationFinalVoltage, &operationInitialVoltage, &lastErrorTime);
+            operationCare(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowCurrent, &nowVoltage, &operationFinalVoltage, &operationInitialVoltage, &lastErrorTime);
         }
         else{
             actualBtnState = gpio_get_level(ENTER_BTN_GPIO);

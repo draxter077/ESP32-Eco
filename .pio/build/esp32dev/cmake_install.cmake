@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/PPrestes/Desktop/ESP32-Eco
+# Install script for directory: /home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/ESP32-Eco")
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,12 +34,12 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Users/PPrestes/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-objdump.exe")
+  set(CMAKE_OBJDUMP "/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/esp-idf/cmake_install.cmake")
+  include("/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/esp-idf/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -57,6 +57,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

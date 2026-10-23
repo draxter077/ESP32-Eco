@@ -25,7 +25,7 @@ rule CUSTOM_COMMAND
 rule C_COMPILER__ESP32-Eco.2eelf_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -33,10 +33,8 @@ rule C_COMPILER__ESP32-Eco.2eelf_unscanned_
 # Rule for linking CXX executable.
 
 rule CXX_EXECUTABLE_LINKER__ESP32-Eco.2eelf_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-g++.exe $FLAGS $LINK_FLAGS @$RSP_FILE -o $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-g++ $FLAGS $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking CXX executable $TARGET_FILE
-  rspfile = $RSP_FILE
-  rspfile_content = $in $LINK_PATH $LINK_LIBRARIES
   restat = $RESTAT
 
 
@@ -46,7 +44,7 @@ rule CXX_EXECUTABLE_LINKER__ESP32-Eco.2eelf_
 rule ASM_COMPILER____idf_xtensa_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building ASM object $out
 
 
@@ -56,7 +54,7 @@ rule ASM_COMPILER____idf_xtensa_unscanned_
 rule C_COMPILER____idf_xtensa_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -64,7 +62,7 @@ rule C_COMPILER____idf_xtensa_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_xtensa_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -75,7 +73,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_xtensa_
 rule C_COMPILER____idf_esp_stdio_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -83,7 +81,7 @@ rule C_COMPILER____idf_esp_stdio_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_stdio_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -94,7 +92,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_stdio_
 rule C_COMPILER____idf_esp_hal_gpspi_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -102,7 +100,7 @@ rule C_COMPILER____idf_esp_hal_gpspi_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_gpspi_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -113,7 +111,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_gpspi_
 rule C_COMPILER____idf_esp_hal_clock_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -121,7 +119,7 @@ rule C_COMPILER____idf_esp_hal_clock_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_clock_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -132,7 +130,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_clock_
 rule C_COMPILER____idf_esp_hal_mspi_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -140,7 +138,7 @@ rule C_COMPILER____idf_esp_hal_mspi_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_mspi_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -151,7 +149,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_mspi_
 rule C_COMPILER____idf_esp_hal_security_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -159,7 +157,7 @@ rule C_COMPILER____idf_esp_hal_security_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_security_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -170,7 +168,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_security_
 rule C_COMPILER____idf_esp_app_format_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -178,7 +176,7 @@ rule C_COMPILER____idf_esp_app_format_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_app_format_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -189,7 +187,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_app_format_
 rule C_COMPILER____idf_esp_bootloader_format_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -197,7 +195,7 @@ rule C_COMPILER____idf_esp_bootloader_format_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_bootloader_format_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -208,7 +206,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_bootloader_format_
 rule C_COMPILER____idf_app_update_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -216,7 +214,7 @@ rule C_COMPILER____idf_app_update_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_app_update_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -227,7 +225,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_app_update_
 rule C_COMPILER____idf_esp_partition_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -235,7 +233,7 @@ rule C_COMPILER____idf_esp_partition_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_partition_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -246,7 +244,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_partition_
 rule C_COMPILER____idf_efuse_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -254,7 +252,7 @@ rule C_COMPILER____idf_efuse_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_efuse_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -265,7 +263,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_efuse_
 rule C_COMPILER____idf_esp_hal_timg_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -273,7 +271,7 @@ rule C_COMPILER____idf_esp_hal_timg_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_timg_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -284,7 +282,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_timg_
 rule C_COMPILER____idf_esp_timer_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -292,7 +290,7 @@ rule C_COMPILER____idf_esp_timer_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_timer_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -303,7 +301,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_timer_
 rule C_COMPILER____idf_esp_security_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -311,7 +309,7 @@ rule C_COMPILER____idf_esp_security_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_security_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -322,7 +320,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_security_
 rule C_COMPILER____idf_esp_driver_gpio_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -330,7 +328,7 @@ rule C_COMPILER____idf_esp_driver_gpio_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_gpio_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -341,7 +339,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_gpio_
 rule C_COMPILER____idf_esp_hal_uart_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -349,7 +347,7 @@ rule C_COMPILER____idf_esp_hal_uart_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_uart_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -360,7 +358,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_uart_
 rule C_COMPILER____idf_esp_pm_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -368,7 +366,7 @@ rule C_COMPILER____idf_esp_pm_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_pm_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -379,7 +377,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_pm_
 rule C_COMPILER____idf_esp_mm_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -387,7 +385,7 @@ rule C_COMPILER____idf_esp_mm_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_mm_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -398,7 +396,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_mm_
 rule C_COMPILER____idf_esp_driver_dma_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -406,7 +404,7 @@ rule C_COMPILER____idf_esp_driver_dma_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_dma_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -417,7 +415,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_dma_
 rule ASM_COMPILER____idf_mbedtls_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building ASM object $out
 
 
@@ -427,7 +425,7 @@ rule ASM_COMPILER____idf_mbedtls_unscanned_
 rule C_COMPILER____idf_mbedtls_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -435,7 +433,7 @@ rule C_COMPILER____idf_mbedtls_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_mbedtls_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -446,7 +444,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_mbedtls_
 rule C_COMPILER__everest_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -454,7 +452,7 @@ rule C_COMPILER__everest_unscanned_
 # Rule for linking CXX static library.
 
 rule CXX_STATIC_LIBRARY_LINKER__everest_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking CXX static library $TARGET_FILE
   restat = $RESTAT
 
@@ -465,7 +463,7 @@ rule CXX_STATIC_LIBRARY_LINKER__everest_
 rule C_COMPILER__p256-m_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -473,7 +471,7 @@ rule C_COMPILER__p256-m_unscanned_
 # Rule for linking CXX static library.
 
 rule CXX_STATIC_LIBRARY_LINKER__p256-m_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking CXX static library $TARGET_FILE
   restat = $RESTAT
 
@@ -484,7 +482,7 @@ rule CXX_STATIC_LIBRARY_LINKER__p256-m_
 rule C_COMPILER__builtin_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -492,7 +490,7 @@ rule C_COMPILER__builtin_unscanned_
 # Rule for linking CXX static library.
 
 rule CXX_STATIC_LIBRARY_LINKER__builtin_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking CXX static library $TARGET_FILE
   restat = $RESTAT
 
@@ -503,7 +501,7 @@ rule CXX_STATIC_LIBRARY_LINKER__builtin_
 rule C_COMPILER__pqcp_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -511,7 +509,7 @@ rule C_COMPILER__pqcp_unscanned_
 # Rule for linking CXX static library.
 
 rule CXX_STATIC_LIBRARY_LINKER__pqcp_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking CXX static library $TARGET_FILE
   restat = $RESTAT
 
@@ -522,7 +520,7 @@ rule CXX_STATIC_LIBRARY_LINKER__pqcp_
 rule C_COMPILER__extras_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -530,7 +528,7 @@ rule C_COMPILER__extras_unscanned_
 # Rule for linking CXX static library.
 
 rule CXX_STATIC_LIBRARY_LINKER__extras_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking CXX static library $TARGET_FILE
   restat = $RESTAT
 
@@ -541,7 +539,7 @@ rule CXX_STATIC_LIBRARY_LINKER__extras_
 rule C_COMPILER__platform_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -549,7 +547,7 @@ rule C_COMPILER__platform_unscanned_
 # Rule for linking CXX static library.
 
 rule CXX_STATIC_LIBRARY_LINKER__platform_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking CXX static library $TARGET_FILE
   restat = $RESTAT
 
@@ -560,7 +558,7 @@ rule CXX_STATIC_LIBRARY_LINKER__platform_
 rule C_COMPILER__utilities_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -568,7 +566,7 @@ rule C_COMPILER__utilities_unscanned_
 # Rule for linking CXX static library.
 
 rule CXX_STATIC_LIBRARY_LINKER__utilities_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking CXX static library $TARGET_FILE
   restat = $RESTAT
 
@@ -579,7 +577,7 @@ rule CXX_STATIC_LIBRARY_LINKER__utilities_
 rule C_COMPILER__tfpsacrypto_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -587,10 +585,8 @@ rule C_COMPILER__tfpsacrypto_unscanned_
 # Rule for linking CXX static library.
 
 rule CXX_STATIC_LIBRARY_LINKER__tfpsacrypto_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS @$RSP_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking CXX static library $TARGET_FILE
-  rspfile = $RSP_FILE
-  rspfile_content = $in $LINK_PATH $LINK_LIBRARIES
   restat = $RESTAT
 
 
@@ -600,7 +596,7 @@ rule CXX_STATIC_LIBRARY_LINKER__tfpsacrypto_
 rule C_COMPILER__mbedx509_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -608,7 +604,7 @@ rule C_COMPILER__mbedx509_unscanned_
 # Rule for linking CXX static library.
 
 rule CXX_STATIC_LIBRARY_LINKER__mbedx509_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking CXX static library $TARGET_FILE
   restat = $RESTAT
 
@@ -619,7 +615,7 @@ rule CXX_STATIC_LIBRARY_LINKER__mbedx509_
 rule C_COMPILER__mbedtls_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -627,7 +623,7 @@ rule C_COMPILER__mbedtls_unscanned_
 # Rule for linking CXX static library.
 
 rule CXX_STATIC_LIBRARY_LINKER__mbedtls_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking CXX static library $TARGET_FILE
   restat = $RESTAT
 
@@ -638,7 +634,7 @@ rule CXX_STATIC_LIBRARY_LINKER__mbedtls_
 rule C_COMPILER____idf_esp_hal_wdt_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -646,7 +642,7 @@ rule C_COMPILER____idf_esp_hal_wdt_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_wdt_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -657,7 +653,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_wdt_
 rule C_COMPILER____idf_esp_hal_i2s_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -665,7 +661,7 @@ rule C_COMPILER____idf_esp_hal_i2s_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_i2s_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -676,7 +672,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_i2s_
 rule C_COMPILER____idf_esp_hal_ana_conv_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -684,7 +680,7 @@ rule C_COMPILER____idf_esp_hal_ana_conv_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_ana_conv_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -695,7 +691,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_ana_conv_
 rule C_COMPILER____idf_bootloader_support_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -703,7 +699,7 @@ rule C_COMPILER____idf_bootloader_support_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_bootloader_support_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -714,7 +710,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_bootloader_support_
 rule C_COMPILER____idf_spi_flash_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -722,7 +718,7 @@ rule C_COMPILER____idf_spi_flash_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_spi_flash_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -733,7 +729,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_spi_flash_
 rule ASM_COMPILER____idf_esp_system_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building ASM object $out
 
 
@@ -743,7 +739,7 @@ rule ASM_COMPILER____idf_esp_system_unscanned_
 rule C_COMPILER____idf_esp_system_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -751,7 +747,7 @@ rule C_COMPILER____idf_esp_system_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_system_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -762,7 +758,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_system_
 rule C_COMPILER____idf_esp_common_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -770,7 +766,7 @@ rule C_COMPILER____idf_esp_common_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_common_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -781,7 +777,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_common_
 rule ASM_COMPILER____idf_esp_rom_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building ASM object $out
 
 
@@ -791,7 +787,7 @@ rule ASM_COMPILER____idf_esp_rom_unscanned_
 rule C_COMPILER____idf_esp_rom_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -799,7 +795,7 @@ rule C_COMPILER____idf_esp_rom_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_rom_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -810,7 +806,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_rom_
 rule C_COMPILER____idf_hal_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -818,7 +814,7 @@ rule C_COMPILER____idf_hal_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_hal_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -829,7 +825,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_hal_
 rule C_COMPILER____idf_log_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -837,7 +833,7 @@ rule C_COMPILER____idf_log_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_log_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -848,7 +844,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_log_
 rule C_COMPILER____idf_heap_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -856,7 +852,7 @@ rule C_COMPILER____idf_heap_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_heap_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -867,7 +863,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_heap_
 rule C_COMPILER____idf_soc_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -875,7 +871,7 @@ rule C_COMPILER____idf_soc_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_soc_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -886,7 +882,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_soc_
 rule C_COMPILER____idf_esp_hal_gpio_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -894,7 +890,7 @@ rule C_COMPILER____idf_esp_hal_gpio_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_gpio_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -905,7 +901,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_gpio_
 rule C_COMPILER____idf_esp_hal_pmu_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -913,7 +909,7 @@ rule C_COMPILER____idf_esp_hal_pmu_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_pmu_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -924,7 +920,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_pmu_
 rule C_COMPILER____idf_esp_hal_touch_sens_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -932,7 +928,7 @@ rule C_COMPILER____idf_esp_hal_touch_sens_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_touch_sens_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -943,7 +939,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_touch_sens_
 rule C_COMPILER____idf_esp_hw_support_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -951,7 +947,7 @@ rule C_COMPILER____idf_esp_hw_support_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hw_support_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -962,7 +958,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hw_support_
 rule ASM_COMPILER____idf_freertos_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building ASM object $out
 
 
@@ -972,7 +968,7 @@ rule ASM_COMPILER____idf_freertos_unscanned_
 rule C_COMPILER____idf_freertos_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -980,7 +976,7 @@ rule C_COMPILER____idf_freertos_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_freertos_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -991,7 +987,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_freertos_
 rule C_COMPILER____idf_esp_libc_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -999,7 +995,7 @@ rule C_COMPILER____idf_esp_libc_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_libc_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1010,7 +1006,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_libc_
 rule C_COMPILER____idf_pthread_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1018,7 +1014,7 @@ rule C_COMPILER____idf_pthread_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_pthread_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1029,7 +1025,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_pthread_
 rule CXX_COMPILER____idf_cxx_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-g++.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-g++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building CXX object $out
 
 
@@ -1037,7 +1033,7 @@ rule CXX_COMPILER____idf_cxx_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_cxx_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1048,7 +1044,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_cxx_
 rule ASM_COMPILER____idf___pio_env_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building ASM object $out
 
 
@@ -1058,7 +1054,7 @@ rule ASM_COMPILER____idf___pio_env_unscanned_
 rule C_COMPILER____idf___pio_env_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1068,7 +1064,7 @@ rule C_COMPILER____idf___pio_env_unscanned_
 rule CXX_COMPILER____idf___pio_env_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-g++.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-g++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building CXX object $out
 
 
@@ -1076,7 +1072,7 @@ rule CXX_COMPILER____idf___pio_env_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf___pio_env_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1087,7 +1083,7 @@ rule C_STATIC_LIBRARY_LINKER____idf___pio_env_
 rule C_COMPILER____idf_esp_ringbuf_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1095,7 +1091,7 @@ rule C_COMPILER____idf_esp_ringbuf_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_ringbuf_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1106,7 +1102,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_ringbuf_
 rule C_COMPILER____idf_esp_psram_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1114,7 +1110,7 @@ rule C_COMPILER____idf_esp_psram_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_psram_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1125,7 +1121,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_psram_
 rule C_COMPILER____idf_esp_driver_uart_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1133,7 +1129,7 @@ rule C_COMPILER____idf_esp_driver_uart_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_uart_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1144,7 +1140,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_uart_
 rule C_COMPILER____idf_esp_driver_gptimer_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1152,7 +1148,7 @@ rule C_COMPILER____idf_esp_driver_gptimer_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_gptimer_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1163,7 +1159,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_gptimer_
 rule C_COMPILER____idf_esp_event_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1171,7 +1167,7 @@ rule C_COMPILER____idf_esp_event_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_event_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1182,7 +1178,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_event_
 rule C_COMPILER____idf_nvs_sec_provider_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1190,7 +1186,7 @@ rule C_COMPILER____idf_nvs_sec_provider_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_nvs_sec_provider_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1201,7 +1197,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_nvs_sec_provider_
 rule C_COMPILER____idf_nvs_flash_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1211,7 +1207,7 @@ rule C_COMPILER____idf_nvs_flash_unscanned_
 rule CXX_COMPILER____idf_nvs_flash_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-g++.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-g++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building CXX object $out
 
 
@@ -1219,7 +1215,7 @@ rule CXX_COMPILER____idf_nvs_flash_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_nvs_flash_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1230,7 +1226,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_nvs_flash_
 rule C_COMPILER____idf_esp_phy_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1238,7 +1234,7 @@ rule C_COMPILER____idf_esp_phy_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_phy_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1249,7 +1245,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_phy_
 rule C_COMPILER____idf_vfs_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1257,7 +1253,7 @@ rule C_COMPILER____idf_vfs_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_vfs_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1268,7 +1264,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_vfs_
 rule C_COMPILER____idf_lwip_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1276,7 +1272,7 @@ rule C_COMPILER____idf_lwip_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_lwip_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1287,7 +1283,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_lwip_
 rule C_COMPILER____idf_esp_netif_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1295,7 +1291,7 @@ rule C_COMPILER____idf_esp_netif_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_netif_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1306,7 +1302,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_netif_
 rule C_COMPILER____idf_wpa_supplicant_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1314,10 +1310,8 @@ rule C_COMPILER____idf_wpa_supplicant_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_wpa_supplicant_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS @$RSP_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
-  rspfile = $RSP_FILE
-  rspfile_content = $in $LINK_PATH $LINK_LIBRARIES
   restat = $RESTAT
 
 
@@ -1327,7 +1321,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_wpa_supplicant_
 rule C_COMPILER____idf_esp_coex_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1335,7 +1329,7 @@ rule C_COMPILER____idf_esp_coex_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_coex_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1346,7 +1340,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_coex_
 rule C_COMPILER____idf_esp_wifi_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1354,7 +1348,7 @@ rule C_COMPILER____idf_esp_wifi_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_wifi_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1365,7 +1359,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_wifi_
 rule C_COMPILER____idf_esp_driver_spi_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1373,7 +1367,7 @@ rule C_COMPILER____idf_esp_driver_spi_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_spi_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1384,7 +1378,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_spi_
 rule ASM_COMPILER____idf_esp_gdbstub_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building ASM object $out
 
 
@@ -1394,7 +1388,7 @@ rule ASM_COMPILER____idf_esp_gdbstub_unscanned_
 rule C_COMPILER____idf_esp_gdbstub_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1402,7 +1396,7 @@ rule C_COMPILER____idf_esp_gdbstub_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_gdbstub_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1413,7 +1407,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_gdbstub_
 rule C_COMPILER____idf_unity_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1421,7 +1415,7 @@ rule C_COMPILER____idf_unity_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_unity_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1432,7 +1426,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_unity_
 rule C_COMPILER____idf_cmock_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1440,7 +1434,7 @@ rule C_COMPILER____idf_cmock_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_cmock_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1451,7 +1445,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_cmock_
 rule C_COMPILER____idf_console_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1459,7 +1453,7 @@ rule C_COMPILER____idf_console_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_console_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1470,7 +1464,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_console_
 rule C_COMPILER____idf_esp_hal_i2c_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1478,7 +1472,7 @@ rule C_COMPILER____idf_esp_hal_i2c_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_i2c_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1489,7 +1483,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_i2c_
 rule C_COMPILER____idf_esp_hal_twai_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1497,7 +1491,7 @@ rule C_COMPILER____idf_esp_hal_twai_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_twai_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1508,7 +1502,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_twai_
 rule C_COMPILER____idf_driver_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1516,7 +1510,7 @@ rule C_COMPILER____idf_driver_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_driver_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1527,7 +1521,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_driver_
 rule C_COMPILER____idf_http_parser_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1535,7 +1529,7 @@ rule C_COMPILER____idf_http_parser_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_http_parser_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1546,7 +1540,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_http_parser_
 rule C_COMPILER____idf_esp-tls_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1554,7 +1548,7 @@ rule C_COMPILER____idf_esp-tls_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp-tls_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1565,7 +1559,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp-tls_
 rule C_COMPILER____idf_esp_driver_i2s_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1573,7 +1567,7 @@ rule C_COMPILER____idf_esp_driver_i2s_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_i2s_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1584,7 +1578,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_i2s_
 rule C_COMPILER____idf_esp_adc_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1592,7 +1586,7 @@ rule C_COMPILER____idf_esp_adc_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_adc_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1603,7 +1597,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_adc_
 rule C_COMPILER____idf_esp_blockdev_util_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1611,7 +1605,7 @@ rule C_COMPILER____idf_esp_blockdev_util_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_blockdev_util_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1622,7 +1616,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_blockdev_util_
 rule C_COMPILER____idf_esp_driver_cam_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1630,7 +1624,7 @@ rule C_COMPILER____idf_esp_driver_cam_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_cam_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1641,7 +1635,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_cam_
 rule C_COMPILER____idf_esp_driver_dac_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1649,7 +1643,7 @@ rule C_COMPILER____idf_esp_driver_dac_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_dac_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1660,7 +1654,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_dac_
 rule C_COMPILER____idf_esp_driver_i2c_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1668,7 +1662,7 @@ rule C_COMPILER____idf_esp_driver_i2c_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_i2c_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1679,7 +1673,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_i2c_
 rule C_COMPILER____idf_esp_hal_ledc_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1687,7 +1681,7 @@ rule C_COMPILER____idf_esp_hal_ledc_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_ledc_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1698,7 +1692,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_ledc_
 rule C_COMPILER____idf_esp_driver_ledc_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1706,7 +1700,7 @@ rule C_COMPILER____idf_esp_driver_ledc_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_ledc_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1717,7 +1711,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_ledc_
 rule C_COMPILER____idf_esp_hal_mcpwm_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1725,7 +1719,7 @@ rule C_COMPILER____idf_esp_hal_mcpwm_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_mcpwm_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1736,7 +1730,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_mcpwm_
 rule C_COMPILER____idf_esp_driver_mcpwm_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1744,7 +1738,7 @@ rule C_COMPILER____idf_esp_driver_mcpwm_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_mcpwm_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1755,7 +1749,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_mcpwm_
 rule C_COMPILER____idf_esp_hal_pcnt_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1763,7 +1757,7 @@ rule C_COMPILER____idf_esp_hal_pcnt_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_pcnt_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1774,7 +1768,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_pcnt_
 rule C_COMPILER____idf_esp_driver_pcnt_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1782,7 +1776,7 @@ rule C_COMPILER____idf_esp_driver_pcnt_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_pcnt_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1793,7 +1787,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_pcnt_
 rule C_COMPILER____idf_esp_hal_rmt_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1801,7 +1795,7 @@ rule C_COMPILER____idf_esp_hal_rmt_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_rmt_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1812,7 +1806,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_rmt_
 rule C_COMPILER____idf_esp_driver_rmt_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1820,7 +1814,7 @@ rule C_COMPILER____idf_esp_driver_rmt_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_rmt_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1831,7 +1825,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_rmt_
 rule C_COMPILER____idf_esp_hal_sd_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1839,7 +1833,7 @@ rule C_COMPILER____idf_esp_hal_sd_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_sd_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1850,7 +1844,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_sd_
 rule C_COMPILER____idf_sdmmc_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1858,7 +1852,7 @@ rule C_COMPILER____idf_sdmmc_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_sdmmc_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1869,7 +1863,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_sdmmc_
 rule C_COMPILER____idf_esp_driver_sd_intf_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1877,7 +1871,7 @@ rule C_COMPILER____idf_esp_driver_sd_intf_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_sd_intf_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1888,7 +1882,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_sd_intf_
 rule C_COMPILER____idf_esp_driver_sdio_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1896,7 +1890,7 @@ rule C_COMPILER____idf_esp_driver_sdio_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_sdio_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1907,7 +1901,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_sdio_
 rule C_COMPILER____idf_esp_driver_sdm_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1915,7 +1909,7 @@ rule C_COMPILER____idf_esp_driver_sdm_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_sdm_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1926,7 +1920,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_sdm_
 rule C_COMPILER____idf_esp_driver_sdmmc_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1934,7 +1928,7 @@ rule C_COMPILER____idf_esp_driver_sdmmc_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_sdmmc_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1945,7 +1939,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_sdmmc_
 rule C_COMPILER____idf_esp_driver_sdspi_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1953,7 +1947,7 @@ rule C_COMPILER____idf_esp_driver_sdspi_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_sdspi_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1964,7 +1958,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_sdspi_
 rule C_COMPILER____idf_esp_driver_touch_sens_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1972,7 +1966,7 @@ rule C_COMPILER____idf_esp_driver_touch_sens_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_touch_sens_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -1983,7 +1977,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_touch_sens_
 rule C_COMPILER____idf_esp_driver_twai_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -1991,7 +1985,7 @@ rule C_COMPILER____idf_esp_driver_twai_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_twai_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2002,7 +1996,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_driver_twai_
 rule C_COMPILER____idf_esp_hal_emac_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2010,7 +2004,7 @@ rule C_COMPILER____idf_esp_hal_emac_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_emac_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2021,7 +2015,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_emac_
 rule C_COMPILER____idf_esp_eth_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2029,7 +2023,7 @@ rule C_COMPILER____idf_esp_eth_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_eth_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2040,7 +2034,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_eth_
 rule C_COMPILER____idf_esp_hal_lcd_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2048,7 +2042,7 @@ rule C_COMPILER____idf_esp_hal_lcd_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_lcd_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2059,7 +2053,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hal_lcd_
 rule C_COMPILER____idf_esp_hid_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2067,7 +2061,7 @@ rule C_COMPILER____idf_esp_hid_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_hid_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2078,7 +2072,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_hid_
 rule C_COMPILER____idf_tcp_transport_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2086,7 +2080,7 @@ rule C_COMPILER____idf_tcp_transport_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_tcp_transport_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2097,7 +2091,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_tcp_transport_
 rule C_COMPILER____idf_esp_http_client_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2105,7 +2099,7 @@ rule C_COMPILER____idf_esp_http_client_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_http_client_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2116,7 +2110,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_http_client_
 rule C_COMPILER____idf_esp_http_server_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2124,7 +2118,7 @@ rule C_COMPILER____idf_esp_http_server_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_http_server_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2135,7 +2129,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_http_server_
 rule C_COMPILER____idf_esp_https_ota_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2143,7 +2137,7 @@ rule C_COMPILER____idf_esp_https_ota_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_https_ota_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2154,7 +2148,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_https_ota_
 rule C_COMPILER____idf_esp_https_server_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2162,7 +2156,7 @@ rule C_COMPILER____idf_esp_https_server_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_https_server_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2173,7 +2167,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_https_server_
 rule C_COMPILER____idf_esp_lcd_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2181,7 +2175,7 @@ rule C_COMPILER____idf_esp_lcd_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_lcd_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2192,7 +2186,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_lcd_
 rule C_COMPILER____idf_protobuf-c_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2200,7 +2194,7 @@ rule C_COMPILER____idf_protobuf-c_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_protobuf-c_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2211,7 +2205,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_protobuf-c_
 rule C_COMPILER____idf_protocomm_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2219,7 +2213,7 @@ rule C_COMPILER____idf_protocomm_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_protocomm_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2230,7 +2224,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_protocomm_
 rule C_COMPILER____idf_esp_local_ctrl_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2238,7 +2232,7 @@ rule C_COMPILER____idf_esp_local_ctrl_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_esp_local_ctrl_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2249,7 +2243,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_esp_local_ctrl_
 rule CXX_COMPILER____idf_wear_levelling_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-g++.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-g++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building CXX object $out
 
 
@@ -2257,7 +2251,7 @@ rule CXX_COMPILER____idf_wear_levelling_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_wear_levelling_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2268,7 +2262,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_wear_levelling_
 rule C_COMPILER____idf_fatfs_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2276,7 +2270,7 @@ rule C_COMPILER____idf_fatfs_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_fatfs_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2287,7 +2281,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_fatfs_
 rule C_COMPILER____idf_perfmon_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2295,7 +2289,7 @@ rule C_COMPILER____idf_perfmon_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_perfmon_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2306,7 +2300,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_perfmon_
 rule C_COMPILER____idf_rt_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2314,7 +2308,7 @@ rule C_COMPILER____idf_rt_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_rt_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2325,7 +2319,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_rt_
 rule C_COMPILER____idf_spiffs_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2333,7 +2327,7 @@ rule C_COMPILER____idf_spiffs_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_spiffs_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2344,7 +2338,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_spiffs_
 rule C_COMPILER____idf_src_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}/home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -2352,7 +2346,7 @@ rule C_COMPILER____idf_src_unscanned_
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER____idf_src_
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\PPrestes\.platformio\packages\toolchain-xtensa-esp-elf\bin\xtensa-esp32-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  command = $PRE_LINK && /home/philippe/.platformio/packages/tool-cmake/bin/cmake -E rm -f $TARGET_FILE && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/philippe/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -2361,7 +2355,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_src_
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe --regenerate-during-build -SC:\Users\PPrestes\Desktop\ESP32-Eco -BC:\Users\PPrestes\Desktop\ESP32-Eco\.pio\build\esp32dev
+  command = /home/philippe/.platformio/packages/tool-cmake/bin/cmake --regenerate-during-build -S/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco -B/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev
   description = Re-running CMake...
   generator = 1
 
@@ -2370,7 +2364,7 @@ rule RERUN_CMAKE
 # Rule for cleaning additional files.
 
 rule CLEAN_ADDITIONAL
-  command = C:\Users\PPrestes\.platformio\packages\tool-cmake\bin\cmake.exe -DCONFIG=$CONFIG -P CMakeFiles\clean_additional.cmake
+  command = /home/philippe/.platformio/packages/tool-cmake/bin/cmake -DCONFIG=$CONFIG -P CMakeFiles/clean_additional.cmake
   description = Cleaning additional files...
 
 
@@ -2378,7 +2372,7 @@ rule CLEAN_ADDITIONAL
 # Rule for cleaning all built files.
 
 rule CLEAN
-  command = C:\Users\PPrestes\.platformio\packages\tool-ninja\ninja.exe $FILE_ARG -t clean $TARGETS
+  command = /home/philippe/.platformio/packages/tool-ninja/ninja $FILE_ARG -t clean $TARGETS
   description = Cleaning all built files...
 
 
@@ -2386,6 +2380,6 @@ rule CLEAN
 # Rule for printing all primary targets available.
 
 rule HELP
-  command = C:\Users\PPrestes\.platformio\packages\tool-ninja\ninja.exe -t targets
+  command = /home/philippe/.platformio/packages/tool-ninja/ninja -t targets
   description = All primary targets available:
 
