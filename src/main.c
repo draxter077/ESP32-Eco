@@ -17,12 +17,12 @@ void app_main(void){
     float operationFinalVoltage = 0, operationInitialVoltage = 0;
     int batterySelected = 0;
     int lastEnterBtnState = 0, actualBtnState = 0;
-    int64_t lastErrorTime = 0;
+    int64_t lastErrorTime = 0, lastTimeFinish = 0;
 
     displayInitial();
     while(1){
         if(CHARGING_STATE || DISCHARGING_STATE){
-            operationCare(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowCurrent, &nowVoltage, &operationFinalVoltage, &operationInitialVoltage, &lastErrorTime);
+            operationCare(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowCurrent, &nowVoltage, &operationFinalVoltage, &operationInitialVoltage, &lastErrorTime, &lastTimeFinish);
         }
         else{
             actualBtnState = gpio_get_level(ENTER_BTN_GPIO);

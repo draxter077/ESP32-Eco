@@ -73,7 +73,7 @@ void arrangeResistors(float nowVoltage, float operationFinalVoltage, float opera
     }
 }
 
-void operationCare(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySelected, float* nowCurrent, float* nowVoltage, float* operationFinalVoltage, float* operationInitialVoltage, int64_t* lastTimeError){
+void operationCare(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySelected, float* nowCurrent, float* nowVoltage, float* operationFinalVoltage, float* operationInitialVoltage, int64_t* lastTimeError, int64_t* lastTimeFinish){
     *nowCurrent = calculateCurrent();
     *nowVoltage = calculateVoltage();
     batteryData b = batteries[*batterySelected];
@@ -85,29 +85,27 @@ void operationCare(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySele
     // Salva telemetria
 
     displayInOperation(*CHARGING_STATE, *DISCHARGING_STATE, *operationInitialVoltage, *operationFinalVoltage, *nowVoltage, *nowCurrent, *batterySelected);
-    if(gpio_get_level(EMERGENCY_BTN_GPIO) || ((*nowVoltage > b.maxVoltage*1.05 || *nowCurrent > 3) && esp_timer_get_time() - *lastTimeError > 5*1000*1000 && esp_timer_get_time() - *lastTimeError < 10*1000*1000)){
-        *CHARGING_STATE = 0;
-        *DISCHARGING_STATE = 0;
-        emergencyValve();
-        displayInitial();
-    }
-    else if(esp_timer_get_time() - *lastTimeError > 10*1000*1000 && *lastTimeError){
-        *lastTimeError = 0;
-    }
-    else if((*nowVoltage > b.maxVoltage*1.05 || *nowCurrent > 3) && !(*lastTimeError)){
-        *lastTimeError = esp_timer_get_time();
+
+    if(gpio_get_level(EMERGENCY_BTN_GPIO) || *nowVoltage > b.maxVoltage*1.05 || *nowCurrent > 3){
+        if(esp_timer_get_time() - *lastTimeError > 10*1000*1000) *lastTimeError = esp_timer_get_time();
+        if(esp_timer_get_time() - *lastTimeError > 5*1000*1000 || gpio_get_level(EMERGENCY_BTN_GPIO)){
+            *CHARGING_STATE = 0;
+            *DISCHARGING_STATE = 0;
+            emergencyValve();
+            displayInitial();
+        }
     }
     
-    if(*CHARGING_STATE && *nowVoltage >= *operationFinalVoltage){
-        endCharge(CHARGING_STATE, TYPE);
-        displayInitial();
+    if((*CHARGING_STATE && *nowVoltage >= *operationFinalVoltage) || (*DISCHARGING_STATE && *nowVoltage <= *operationFinalVoltage)){
+        if(esp_timer_get_time() - *lastTimeFinish > 10*1000*1000) *lastTimeFinish = esp_timer_get_time();
+        else if(esp_timer_get_time() - *lastTimeFinish > 5*1000*1000){
+            if(*CHARGING_STATE) endCharge(CHARGING_STATE, TYPE);
+            else if(*DISCHARGING_STATE) endDischarge(DISCHARGING_STATE);
+            displayInitial();
+        }
     }
-    else if(*DISCHARGING_STATE && *nowVoltage <= *operationFinalVoltage){
-        *DISCHARGING_STATE = 0;
-        endDischarge(DISCHARGING_STATE);
-        displayInitial();
-    }
-    else if(*DISCHARGING_STATE){
+
+    if(*DISCHARGING_STATE){
         arrangeResistors(*nowVoltage, *operationFinalVoltage, *operationInitialVoltage, *nowCurrent, *batterySelected);
     }
 

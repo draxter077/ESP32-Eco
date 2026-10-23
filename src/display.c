@@ -304,7 +304,7 @@ void displayInOperation(int isCharging, int isDischarging, float initialVoltage,
 
 void displayPreOperation(void){
     displayClear();
-    displayDrawString(0,20,"Em 5s inicia a operação");
+    displayDrawString(0,20,"Início em 5s");
     displayDrawString(0,30,"Cancele em Enter");
     displayRefresh();
 }

@@ -14,7 +14,7 @@
 
 #define POTENCIOMETER_GPIO      ADC_CHANNEL_6 // GPIO34
 #define VOLTAGE_GPIO            ADC_CHANNEL_0 // GPIOVP/A0
-#define CURRENT_GPIO            ADC_CHANNEL_7 // GPIO27
+#define CURRENT_GPIO            ADC_CHANNEL_7 // GPIO35
 
 #define ADC_UNIT_ID             ADC_UNIT_1
 #define ADC_ATTENUATION         ADC_ATTEN_DB_12

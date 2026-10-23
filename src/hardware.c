@@ -86,5 +86,5 @@ int menuSelectFinalVoltage(int batterySelected, float nowVoltage){
     adc_oneshot_read(adc1_handle, POTENCIOMETER_GPIO, &raw);
     int readValue = (int) (b.maxVoltage - b.minVoltage)*(raw/4095.0) + b.minVoltage;
     displayFinalVoltageSelect(readValue, batterySelected, nowVoltage);
-    return raw;
+    return readValue;
 }
