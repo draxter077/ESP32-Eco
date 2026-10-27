@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "esp-idf/mbedtls/mbedtls/tf-psa-crypto/utilities/libutilities.a"
+			"path" : "esp-idf/mbedtls/mbedtls/tf-psa-crypto/drivers/pqcp/libpqcp.a"
 		}
 	],
 	"backtrace" : 3,
@@ -25,13 +25,12 @@
 			"target_compile_definitions",
 			"tf_psa_crypto_set_config_files_compile_definitions",
 			"include_directories",
-			"target_include_directories",
-			"target_link_libraries"
+			"target_include_directories"
 		],
 		"files" : 
 		[
-			"C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/objlib.cmake",
-			"C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/utilities/CMakeLists.txt",
+			"C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/driver.cmake",
+			"C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/pqcp/CMakeLists.txt",
 			"C:/Users/PPrestes/.platformio/packages/framework-espidf/tools/cmake/component.cmake",
 			"C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/CMakeLists.txt",
 			"C:/Users/PPrestes/.platformio/packages/framework-espidf/tools/cmake/utilities.cmake",
@@ -45,7 +44,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 3,
+				"line" : 7,
 				"parent" : 0
 			},
 			{
@@ -55,7 +54,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 23,
+				"line" : 28,
 				"parent" : 2
 			},
 			{
@@ -88,7 +87,7 @@
 			{
 				"command" : 7,
 				"file" : 0,
-				"line" : 24,
+				"line" : 29,
 				"parent" : 2
 			},
 			{
@@ -142,7 +141,7 @@
 			{
 				"command" : 9,
 				"file" : 0,
-				"line" : 25,
+				"line" : 30,
 				"parent" : 2
 			},
 			{
@@ -158,40 +157,22 @@
 				"parent" : 19
 			},
 			{
-				"command" : 5,
-				"file" : 3,
-				"line" : 225,
-				"parent" : 4
-			},
-			{
 				"command" : 10,
 				"file" : 2,
 				"line" : 480,
 				"parent" : 5
 			},
 			{
-				"command" : 11,
-				"file" : 3,
-				"line" : 218,
-				"parent" : 4
-			},
-			{
-				"command" : 11,
-				"file" : 3,
-				"line" : 220,
-				"parent" : 4
-			},
-			{
 				"command" : 12,
 				"file" : 0,
-				"line" : 39,
+				"line" : 40,
 				"parent" : 2
 			},
 			{
 				"command" : 11,
 				"file" : 5,
 				"line" : 389,
-				"parent" : 25
+				"parent" : 22
 			},
 			{
 				"command" : 13,
@@ -208,38 +189,14 @@
 			{
 				"command" : 14,
 				"file" : 0,
-				"line" : 27,
+				"line" : 32,
 				"parent" : 2
 			},
 			{
 				"command" : 14,
-				"file" : 0,
-				"line" : 36,
-				"parent" : 2
-			},
-			{
-				"command" : 14,
-				"file" : 0,
-				"line" : 36,
-				"parent" : 2
-			},
-			{
-				"command" : 14,
-				"file" : 0,
-				"line" : 36,
-				"parent" : 2
-			},
-			{
-				"command" : 14,
-				"file" : 0,
-				"line" : 36,
-				"parent" : 2
-			},
-			{
-				"command" : 15,
-				"file" : 3,
-				"line" : 313,
-				"parent" : 4
+				"file" : 1,
+				"line" : 10,
+				"parent" : 0
 			}
 		]
 	},
@@ -398,29 +355,17 @@
 				{
 					"backtrace" : 20,
 					"fragment" : "-Wmissing-declarations"
-				},
-				{
-					"backtrace" : 21,
-					"fragment" : "-Os"
 				}
 			],
 			"defines" : 
 			[
 				{
-					"backtrace" : 22,
+					"backtrace" : 21,
 					"define" : "ESP_PLATFORM"
 				},
 				{
-					"backtrace" : 22,
+					"backtrace" : 21,
 					"define" : "IDF_VER=\"6.1.0\""
-				},
-				{
-					"backtrace" : 23,
-					"define" : "MBEDTLS_CONFIG_FILE=\"mbedtls/esp_config.h\""
-				},
-				{
-					"backtrace" : 24,
-					"define" : "MBEDTLS_MAJOR_VERSION=4"
 				},
 				{
 					"backtrace" : 3,
@@ -431,95 +376,95 @@
 					"define" : "SOC_XTAL_FREQ_MHZ=CONFIG_XTAL_FREQ"
 				},
 				{
-					"backtrace" : 26,
+					"backtrace" : 23,
 					"define" : "TF_PSA_CRYPTO_USER_CONFIG_FILE=\"mbedtls/esp_config.h\""
 				},
 				{
-					"backtrace" : 22,
+					"backtrace" : 21,
 					"define" : "_GLIBCXX_HAVE_POSIX_SEMAPHORE"
 				},
 				{
-					"backtrace" : 22,
+					"backtrace" : 21,
 					"define" : "_GLIBCXX_USE_POSIX_SEMAPHORE"
 				},
 				{
-					"backtrace" : 22,
+					"backtrace" : 21,
 					"define" : "_GNU_SOURCE"
 				},
 				{
-					"backtrace" : 22,
+					"backtrace" : 21,
 					"define" : "_POSIX_READER_WRITER_LOCKS"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 27,
+					"backtrace" : 24,
 					"path" : "C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/config"
 				},
 				{
-					"backtrace" : 28,
+					"backtrace" : 25,
 					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/port/include"
 				},
 				{
-					"backtrace" : 28,
+					"backtrace" : 25,
 					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/esp_crt_bundle/include"
 				},
 				{
-					"backtrace" : 28,
+					"backtrace" : 25,
 					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/port/psa_driver/include"
 				},
 				{
-					"backtrace" : 29,
+					"backtrace" : 26,
+					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/pqcp/include"
+				},
+				{
+					"backtrace" : 26,
 					"path" : "C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/esp-idf/mbedtls/mbedtls/tf-psa-crypto/include"
 				},
 				{
-					"backtrace" : 29,
+					"backtrace" : 26,
 					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/include"
 				},
 				{
-					"backtrace" : 29,
+					"backtrace" : 26,
 					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/core"
 				},
 				{
-					"backtrace" : 29,
+					"backtrace" : 26,
 					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/dispatch"
 				},
 				{
-					"backtrace" : 29,
+					"backtrace" : 26,
 					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/extras"
 				},
 				{
-					"backtrace" : 29,
+					"backtrace" : 26,
 					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/platform"
 				},
 				{
-					"backtrace" : 29,
+					"backtrace" : 26,
 					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/utilities"
 				},
 				{
-					"backtrace" : 29,
-					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/builtin/src"
-				},
-				{
-					"backtrace" : 29,
-					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/pqcp/src"
-				},
-				{
-					"backtrace" : 30,
+					"backtrace" : 26,
 					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/builtin/include"
 				},
 				{
-					"backtrace" : 31,
+					"backtrace" : 26,
 					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/everest/include"
 				},
 				{
-					"backtrace" : 32,
-					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/p256-m/p256-m"
+					"backtrace" : 26,
+					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/p256-m"
 				},
 				{
-					"backtrace" : 33,
-					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/pqcp/include"
+					"backtrace" : 27,
+					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/pqcp/src"
+				},
+				{
+					"backtrace" : 27,
+					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/pqcp/mldsa-native/mldsa"
 				},
 				{
 					"backtrace" : 3,
@@ -776,46 +721,29 @@
 				{
 					"backtrace" : 3,
 					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/lwip/port/esp32xx/include/sys"
-				},
-				{
-					"backtrace" : 34,
-					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/esp_security/include"
-				},
-				{
-					"backtrace" : 34,
-					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/esp_hal_security/esp32/include"
-				},
-				{
-					"backtrace" : 34,
-					"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/esp_hal_security/include"
 				}
 			],
 			"language" : "C",
 			"sourceIndexes" : 
 			[
 				0,
-				1,
-				2,
-				3,
-				4,
-				5,
-				6
+				1
 			]
 		}
 	],
 	"dependencies" : 
 	[
 		{
-			"id" : "extras::@da3ebe889a24990de749"
+			"id" : "p256-m::@0896fe22fa231c6e3605"
 		}
 	],
-	"id" : "utilities::@53a901888592676506cc",
-	"name" : "utilities",
-	"nameOnDisk" : "libutilities.a",
+	"id" : "pqcp::@8428104a4905c20302bc",
+	"name" : "pqcp",
+	"nameOnDisk" : "libpqcp.a",
 	"paths" : 
 	{
-		"build" : "esp-idf/mbedtls/mbedtls/tf-psa-crypto/utilities",
-		"source" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/utilities"
+		"build" : "esp-idf/mbedtls/mbedtls/tf-psa-crypto/drivers/pqcp",
+		"source" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/pqcp"
 	},
 	"sourceGroups" : 
 	[
@@ -824,12 +752,7 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1,
-				2,
-				3,
-				4,
-				5,
-				6
+				1
 			]
 		}
 	],
@@ -838,43 +761,13 @@
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/utilities/asn1parse.c",
+			"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/pqcp/src/psa_crypto_mldsa.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/utilities/asn1write.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/utilities/base64.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/utilities/constant_time.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/utilities/oid.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/utilities/pem.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/utilities/pkcs5.c",
+			"path" : "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/mbedtls/mbedtls/tf-psa-crypto/drivers/pqcp/src/wrap_mldsa_native.c",
 			"sourceGroupIndex" : 0
 		}
 	],

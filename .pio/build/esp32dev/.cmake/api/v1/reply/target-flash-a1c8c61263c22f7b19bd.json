@@ -18,10 +18,10 @@
 			"C:/Users/PPrestes/.platformio/packages/framework-espidf/tools/cmake/build.cmake",
 			"C:/Users/PPrestes/.platformio/packages/framework-espidf/tools/cmake/project.cmake",
 			"CMakeLists.txt",
-			"C:/Users/PPrestes/.platformio/packages/framework-espidf/components/partition_table/CMakeLists.txt",
-			"C:/Users/PPrestes/.platformio/packages/framework-espidf/components/bootloader/CMakeLists.txt",
 			"C:/Users/PPrestes/.platformio/packages/framework-espidf/components/esptool_py/project_include.cmake",
-			"C:/Users/PPrestes/.platformio/packages/framework-espidf/tools/cmake/flash_targets.cmake"
+			"C:/Users/PPrestes/.platformio/packages/framework-espidf/tools/cmake/flash_targets.cmake",
+			"C:/Users/PPrestes/.platformio/packages/framework-espidf/components/partition_table/CMakeLists.txt",
+			"C:/Users/PPrestes/.platformio/packages/framework-espidf/components/bootloader/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -53,24 +53,6 @@
 				"parent" : 3
 			},
 			{
-				"file" : 3
-			},
-			{
-				"command" : 4,
-				"file" : 3,
-				"line" : 186,
-				"parent" : 5
-			},
-			{
-				"file" : 4
-			},
-			{
-				"command" : 4,
-				"file" : 4,
-				"line" : 37,
-				"parent" : 7
-			},
-			{
 				"command" : 7,
 				"file" : 1,
 				"line" : 1101,
@@ -80,18 +62,36 @@
 				"command" : 6,
 				"file" : 0,
 				"line" : 934,
-				"parent" : 9
+				"parent" : 5
 			},
 			{
 				"command" : 5,
-				"file" : 6,
+				"file" : 4,
 				"line" : 22,
-				"parent" : 10
+				"parent" : 6
+			},
+			{
+				"command" : 4,
+				"file" : 3,
+				"line" : 345,
+				"parent" : 7
+			},
+			{
+				"file" : 5
 			},
 			{
 				"command" : 4,
 				"file" : 5,
-				"line" : 345,
+				"line" : 186,
+				"parent" : 9
+			},
+			{
+				"file" : 6
+			},
+			{
+				"command" : 4,
+				"file" : 6,
+				"line" : 37,
 				"parent" : 11
 			}
 		]
@@ -99,16 +99,16 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 6,
+			"backtrace" : 8,
+			"id" : "app::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 10,
 			"id" : "partition_table_bin::@8e7a60ee4fe55e1aaabf"
 		},
 		{
-			"backtrace" : 8,
-			"id" : "bootloader::@6890427a1f51a3e7e1df"
-		},
-		{
 			"backtrace" : 12,
-			"id" : "app::@6890427a1f51a3e7e1df"
+			"id" : "bootloader::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "flash::@6890427a1f51a3e7e1df",

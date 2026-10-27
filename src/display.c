@@ -308,3 +308,10 @@ void displayPreOperation(void){
     displayDrawString(0,30,"Cancele em Enter");
     displayRefresh();
 }
+
+void displayEmergency(void){
+    displayClear();
+    displayDrawString(0,20,"PARADO");
+    displayDrawString(0,30,"ERRO");
+    displayRefresh();
+}

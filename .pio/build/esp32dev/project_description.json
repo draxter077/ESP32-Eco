@@ -1,7 +1,7 @@
 {
     "version":            "1.3",
     "project_name":       "ESP32-Eco",
-    "project_version":    "c47cb2f-dirty",
+    "project_version":    "836a484-dirty",
     "project_path":       "C:/Users/PPrestes/Desktop/ESP32-Eco",
     "idf_path":           "C:/Users/PPrestes/.platformio/packages/framework-espidf",
     "build_dir":          "C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev",

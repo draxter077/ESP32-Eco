@@ -15,8 +15,9 @@ void emergencyValve(){
     gpio_set_level(DG3_GPIO, 0);
     gpio_set_level(FAN_GPIO, 0);
     gpio_set_level(LED_GPIO, 1);
-    displayInOperation(0,0,0,0,0,0,0);
+    displayEmergency();
     vTaskDelay(pdMS_TO_TICKS(5000));
+    gpio_set_level(LED_GPIO, 0);
 }
 
 void startCharge(int* CHARGING_STATE, int TYPE){
