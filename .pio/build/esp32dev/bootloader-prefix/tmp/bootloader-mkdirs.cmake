@@ -6,22 +6,22 @@ cmake_minimum_required(VERSION 3.5)
 # If CMAKE_DISABLE_SOURCE_CHANGES is set to true and the source directory is an
 # existing directory in our source tree, calling file(MAKE_DIRECTORY) on it
 # would cause a fatal error, even though it would be a no-op.
-if(NOT EXISTS "/home/philippe/.platformio/packages/framework-espidf/components/bootloader/subproject")
-  file(MAKE_DIRECTORY "/home/philippe/.platformio/packages/framework-espidf/components/bootloader/subproject")
+if(NOT EXISTS "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/bootloader/subproject")
+  file(MAKE_DIRECTORY "C:/Users/PPrestes/.platformio/packages/framework-espidf/components/bootloader/subproject")
 endif()
 file(MAKE_DIRECTORY
-  "/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader"
-  "/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix"
-  "/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/tmp"
-  "/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp"
-  "/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src"
-  "/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp"
+  "C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/bootloader"
+  "C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix"
+  "C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/tmp"
+  "C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp"
+  "C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src"
+  "C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()

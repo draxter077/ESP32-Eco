@@ -3,6 +3,7 @@
 #include "hardware.h"
 #include "display.h"
 #include "config.h"
+#include "telemetry.h"
 #include "esp_timer.h"
 
 void emergencyValve(){
@@ -73,7 +74,7 @@ void arrangeResistors(float nowVoltage, float operationFinalVoltage, float opera
     }
 }
 
-void operationCare(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySelected, float* nowCurrent, float* nowVoltage, float* operationFinalVoltage, float* operationInitialVoltage, int64_t* lastTimeError, int64_t* lastTimeFinish){
+void operationCare(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySelected, float* nowCurrent, float* nowVoltage, float* operationFinalVoltage, float* operationInitialVoltage, int64_t* operationStartTime, int64_t* lastTimeError, int64_t* lastTimeFinish){
     *nowCurrent = calculateCurrent();
     *nowVoltage = calculateVoltage();
     batteryData b = batteries[*batterySelected];
@@ -82,8 +83,7 @@ void operationCare(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySele
     if(*batterySelected == 0) TYPE = 42;
     else if(*batterySelected == 1) TYPE = 12;
 
-    // Salva telemetria
-
+    saveLogRecord(esp_timer_get_time() - *operationStartTime, *nowCurrent, *nowVoltage);
     displayInOperation(*CHARGING_STATE, *DISCHARGING_STATE, *operationInitialVoltage, *operationFinalVoltage, *nowVoltage, *nowCurrent, *batterySelected);
 
     if(gpio_get_level(EMERGENCY_BTN_GPIO) || *nowVoltage > b.maxVoltage*1.05 || *nowCurrent > 3){
@@ -109,5 +109,5 @@ void operationCare(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySele
         arrangeResistors(*nowVoltage, *operationFinalVoltage, *operationInitialVoltage, *nowCurrent, *batterySelected);
     }
 
-    vTaskDelay(pdMS_TO_TICKS(100));
+    vTaskDelay(pdMS_TO_TICKS(1000));
 }

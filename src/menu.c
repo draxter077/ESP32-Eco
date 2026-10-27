@@ -5,7 +5,7 @@
 #include "freertos/task.h"
 #include "esp_timer.h"
 
-void menu(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySelected, float* nowVoltage, float* operationFinalVoltage, float* operationInitialVoltage){
+void menu(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySelected, float* nowVoltage, float* operationFinalVoltage, float* operationInitialVoltage, int64_t* operationStartTime){
     int lastEnterBtnState = 0, actualBtnState = 0;
     int64_t startMenuTime = esp_timer_get_time();
     while(1){
@@ -26,6 +26,7 @@ void menu(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySelected, flo
                     while(1){
                         actualBtnState = gpio_get_level(ENTER_BTN_GPIO);
                         if(esp_timer_get_time() - startMenuTime > 5*1000*1000){
+                            *operationStartTime = esp_timer_get_time();
                             if(*operationFinalVoltage > *nowVoltage){
                                 int TYPE = 0;
                                 if(*batterySelected == 0) TYPE = 42;

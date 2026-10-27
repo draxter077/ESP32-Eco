@@ -1,4 +1,4 @@
-"-specs=/home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/bootloader/specs/picolibc.specs"
+"-specs=C:/Users/PPrestes/Desktop/ESP32-Eco/.pio/build/esp32dev/bootloader/specs/picolibc.specs"
 -Wno-frame-address
 -mlongcalls
 -fno-builtin-memcpy

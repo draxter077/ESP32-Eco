@@ -1,10 +1,5 @@
-# This file was automatically generated for projects
-# without default 'CMakeLists.txt' file.
-
-FILE(GLOB_RECURSE app_sources ${CMAKE_SOURCE_DIR}/src/*.*)
-
 idf_component_register(
-    SRCS "main.c" "hardware.c" "control.c" "menu.c" "display.c"
+    SRCS "main.c" "hardware.c" "control.c" "menu.c" "display.c" "telemetry.c" "network.c"
     INCLUDE_DIRS "."
     REQUIRES 
         esp_http_server 
@@ -12,4 +7,7 @@ idf_component_register(
         driver 
         esp_adc 
         esp_driver_gpio
+        esp_wifi
+        esp_netif
+        spiffs
 )

@@ -1,4 +1,4 @@
-/* * Data converted from /home/philippe/Documentos/PlatformIO/Projects/ESP32-Eco/.pio/build/esp32dev/x509_crt_bundle
+/* * Data converted from C:\Users\PPrestes\Desktop\ESP32-Eco\.pio\build\esp32dev\x509_crt_bundle
  */
 .data
 #if !defined (__APPLE__) && !defined (__linux__)
