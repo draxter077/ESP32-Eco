@@ -5,13 +5,14 @@
 adc_oneshot_unit_handle_t adc1_handle = NULL;
 batteryData batteries[2] = {
     [0] = {"Nancy 42V", 42.0f, 8.0f},
-    [1] = {"Aveiro 12V", 12.0f, 3.0f}
+    [1] = {"Aveiro 12V", 12.0f, 3.0f} /* Avaliar esse terceiro valor*/
 };
 
+/* Corrigir mosfet de carga e FAN*/
 void hardwareInit(void){
     gpio_config_t out_conf = {
-        .pin_bit_mask = (1ULL<<DISCHARGING_GATE_GPIO) | (1ULL<<CHARGING_42_GATE_GPIO) | (1ULL<<CHARGING_12_GATE_GPIO) | 
-                        (1ULL<<DG1_GPIO) | (1ULL<<DG2_GPIO) | (1ULL<<DG3_GPIO) | (1ULL<<FAN_GPIO) | 
+        .pin_bit_mask = (1ULL<<DISCHARGING_GATE_GPIO) | (1ULL<<CHARGING_42_GATE_GPIO) | 
+                        (1ULL<<DG1_GPIO) | (1ULL<<DG2_GPIO) | (1ULL<<DG3_GPIO) |
                         (1ULL<<LED_GPIO),
         .mode = GPIO_MODE_OUTPUT,
         .pull_up_en = GPIO_PULLUP_DISABLE,
@@ -21,12 +22,10 @@ void hardwareInit(void){
     gpio_config(&out_conf);
 
     gpio_set_level(CHARGING_42_GATE_GPIO, 0);
-    gpio_set_level(CHARGING_12_GATE_GPIO, 0);
     gpio_set_level(DISCHARGING_GATE_GPIO, 0);
     gpio_set_level(DG1_GPIO, 0);
     gpio_set_level(DG2_GPIO, 0);
     gpio_set_level(DG3_GPIO, 0);
-    gpio_set_level(FAN_GPIO, 0);
     gpio_set_level(LED_GPIO, 0);
 
     gpio_config_t in_conf = {
@@ -54,6 +53,8 @@ void hardwareInit(void){
     displayInit();
 }
 
+/* Pegar amostra maior e fazer a media */
+/* Avaliar essa função para o novo modelo */
 float calculateCurrent(void){
     int raw = 0;
     adc_oneshot_read(adc1_handle, CURRENT_GPIO, &raw);
@@ -61,6 +62,8 @@ float calculateCurrent(void){
     return readValue;
 }
 
+/* Pegar amostra maior e fazer a media */
+/* Avaliar essa função para o novo modelo */
 float calculateVoltage(void){
     int raw = 0;
     adc_oneshot_read(adc1_handle, VOLTAGE_GPIO, &raw);
@@ -68,10 +71,22 @@ float calculateVoltage(void){
     return readValue;
 }
 
-float calculateTemperature(void){
-    return 0;
+/* MUDEI */
+int menuSelectBattery(void){
+    int raw = 0;
+    esp_err_t err = adc_oneshot_read(adc1_handle,POTENCIOMETER_GPIO,&raw);
+
+    if (err != ESP_OK){
+        return -1;
+    }
+
+    int readValue = (raw >= 2048) ? 1 : 0;
+    displayBatterySelect(readValue);
+
+    return readValue;
 }
 
+/*
 int menuSelectBattery(void){
     int raw = 0;
     adc_oneshot_read(adc1_handle, POTENCIOMETER_GPIO, &raw);
@@ -79,7 +94,9 @@ int menuSelectBattery(void){
     displayBatterySelect(readValue);
     return readValue;
 }
+*/
 
+/* Melhor retornar um float*/
 int menuSelectFinalVoltage(int batterySelected, float nowVoltage){
     int raw = 0;
     batteryData b = batteries[batterySelected];

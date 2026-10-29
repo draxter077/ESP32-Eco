@@ -5,3 +5,5 @@ typedef struct {
 } batteryData;
 
 extern batteryData batteries[];
+
+#define V_OFFSET 1
