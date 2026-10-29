@@ -20,16 +20,37 @@ int64_t lastErrorTime = 0, lastTimeFinish = 0, operationStartTime = 0;
 
 void app_main(void){
     hardwareInit();
+    pwm_init();
+    pwm_stop();
     nvs_flash_init();
     initStorage();
     wifi_init_softap();
     start_webserver();
     displayInitial();
 
+    /* Deixar o pwm a cada 10ms e o resto a cada 1000ms */
+    int contador = 0;   
+    TickType_t tick = xTaskGetTickCount();
+
     while(1){
+
         if(CHARGING_STATE || DISCHARGING_STATE){
-            operationCare(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowCurrent, &nowVoltage, &operationFinalVoltage, &operationInitialVoltage, &operationStartTime, &lastErrorTime, &lastTimeFinish);
+            contador++;
+            nowCurrent = calculateCurrent();
+            nowVoltage = calculateVoltage();
+            batteryData b = batteries[batterySelected];
+            if(CHARGING_STATE){
+                pwm_set_duty(b,nowVoltage,nowCurrent);
+                if(gpio_get_level(EMERGENCY_BTN_GPIO)){
+                    pwm_stop(); 
+                }
+            if(contador == 100){
+                operationCare(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowCurrent, &nowVoltage, &operationFinalVoltage, &operationInitialVoltage, &operationStartTime, &lastErrorTime, &lastTimeFinish);
+                contador = 0;
+            }
         }
+
+
         else{
             actualBtnState = gpio_get_level(ENTER_BTN_GPIO);
             if(!actualBtnState && lastEnterBtnState){
@@ -42,6 +63,6 @@ void app_main(void){
             }
         }
 
-        vTaskDelay(pdMS_TO_TICKS(10));
+        vTaskDelayUntil(&tick, pdMS_TO_TICKS(10));
     }
 }
