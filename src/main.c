@@ -27,29 +27,19 @@ void app_main(void){
     wifi_init_softap();
     start_webserver();
     displayInitial();
-
-    /* Deixar o pwm a cada 10ms e o resto a cada 1000ms */
-    int contador = 0;   
+ 
     TickType_t tick = xTaskGetTickCount();
 
     while(1){
 
         if(CHARGING_STATE || DISCHARGING_STATE){
-            contador++;
             nowCurrent = calculateCurrent();
             nowVoltage = calculateVoltage();
-            batteryData b = batteries[batterySelected];
-            if(CHARGING_STATE){
-                pwm_set_duty(b,nowVoltage,nowCurrent);
-                if(gpio_get_level(EMERGENCY_BTN_GPIO)){
-                    pwm_stop(); 
-                }
-            if(contador == 100){
-                operationCare(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowCurrent, &nowVoltage, &operationFinalVoltage, &operationInitialVoltage, &operationStartTime, &lastErrorTime, &lastTimeFinish);
-                contador = 0;
-            }
-            }
+            operationCare(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowCurrent, &nowVoltage, &operationFinalVoltage, &operationInitialVoltage, &operationStartTime, &lastErrorTime, &lastTimeFinish);
+            if(CHARGING_STATE && batterySelected >= 0 && batterySelected < 2){
+                pwm_set_duty(batteries[batterySelected], nowVoltage, nowCurrent);
         }
+    }
 
 
         else{
@@ -57,7 +47,9 @@ void app_main(void){
             if(!actualBtnState && lastEnterBtnState){
                 menu(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowVoltage, &operationFinalVoltage, &operationInitialVoltage, &operationStartTime);
                 lastEnterBtnState = 0;
-                displayInitial();
+                if (!CHARGING_STATE && !DISCHARGING_STATE) {
+                    displayInitial();
+                }
             }
             else{
                 lastEnterBtnState = actualBtnState;
