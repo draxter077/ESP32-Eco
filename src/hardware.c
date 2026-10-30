@@ -18,6 +18,7 @@ static esp_err_t initADCCalibration(void)
 }
 
 adc_oneshot_unit_handle_t adc1_handle = NULL;
+adc_oneshot_unit_handle_t adc2_handle = NULL;
 batteryData batteries[2] = {
     [0] = {"Nancy 42V", 42.0f, 30.0f},
     [1] = {"Aveiro 12V", 12.6f, 9.0f} 
@@ -62,7 +63,7 @@ void hardwareInit(void){
     };
     adc_oneshot_config_channel(adc1_handle, VOLTAGE_GPIO, &adc_config);
     adc_oneshot_config_channel(adc1_handle, CURRENT_GPIO, &adc_config);
-    adc_oneshot_config_channel(adc1_handle, POTENCIOMETER_GPIO, &adc_config);
+    adc_oneshot_config_channel(adc2_handle, POTENCIOMETER_GPIO, &adc_config);
 
     esp_err_t err = initADCCalibration();
     if (err != ESP_OK) {
@@ -95,12 +96,10 @@ static esp_err_t readAdcAverage(adc_channel_t channel, int samples, float *avera
 }
 
 #define WCS_ZERO 2.50f
-#define WCS_SENSITIVITY 0.066f
 #define QTD_AMOSTRAS 5
 
 
-float calculateCurrent(void)
-{
+float calculateCurrent(void){
     int raw = 0;
     int adc_mV = 0;
     int soma_mV = 0;
@@ -127,13 +126,17 @@ float calculateCurrent(void)
     float tensaoADC = (soma_mV / (float)QTD_AMOSTRAS) / 1000.0f;
 
     // Recupera a tensão original na saída do WCS1800
-    float tensaoSensor = tensaoADC * 1.5f;
+    float tensaoSensor = fabs(tensaoADC * 1.5f);
 
     // Converte a tensão do sensor em corrente
-    float corrente = (tensaoSensor - WCS_ZERO) / WCS_SENSITIVITY;
+    float corrente = (tensaoSensor - WCS_ZERO) * 2.0f;
 
-    return fabs(corrente);
-}
+    if(corrente < 0){
+        corrente = 0;
+    }
+
+    return corrente;
+}   
 
 
 float calculateVoltage(void){
@@ -153,7 +156,7 @@ float calculateVoltage(void){
 
 int menuSelectBattery(void){
     int raw = 0;
-    esp_err_t err = adc_oneshot_read(adc1_handle,POTENCIOMETER_GPIO,&raw);
+    esp_err_t err = adc_oneshot_read(adc2_handle,POTENCIOMETER_GPIO,&raw);
 
     if (err != ESP_OK){
         return -1;
@@ -171,7 +174,7 @@ float menuSelectFinalVoltage(int batterySelected, float nowVoltage){
     }
 
     int raw = 0;
-    if (adc_oneshot_read(adc1_handle, POTENCIOMETER_GPIO, &raw) != ESP_OK) {
+    if (adc_oneshot_read(adc2_handle, POTENCIOMETER_GPIO, &raw) != ESP_OK) {
         return NAN;
     }
 

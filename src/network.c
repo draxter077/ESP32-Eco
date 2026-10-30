@@ -315,13 +315,11 @@ static esp_err_t control_post_handler(httpd_req_t *req) {
         httpd_query_key_value(buf, "battery", bat_str, sizeof(bat_str));
         httpd_query_key_value(buf, "voltage", volt_str, sizeof(volt_str));
 
-        int battery = atoi(bat_str);
         float voltage = atof(volt_str);
         operationFinalVoltage = voltage;
 
         if (strcmp(action, "charge") == 0){
-            int TYPE = (battery == 0) ? 42 : 12;
-            startCharge(&CHARGING_STATE, TYPE);
+            startCharge(&CHARGING_STATE);
         } else if (strcmp(action, "discharge") == 0) {
             startDischarge(&DISCHARGING_STATE);
         }
