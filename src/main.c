@@ -48,6 +48,7 @@ void app_main(void){
                 operationCare(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowCurrent, &nowVoltage, &operationFinalVoltage, &operationInitialVoltage, &operationStartTime, &lastErrorTime, &lastTimeFinish);
                 contador = 0;
             }
+            }
         }
 
 

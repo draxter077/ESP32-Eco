@@ -22,9 +22,10 @@ extern adc_oneshot_unit_handle_t adc1_handle;
 
 void hardwareInit(void);
 
+// Retorna a corrente em amperes
 float calculateCurrent(void);
 
-
+// Retorna a tensão em volts
 float calculateVoltage(void);
 
 // Seleciona a bateria no display
