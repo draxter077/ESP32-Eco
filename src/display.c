@@ -6,7 +6,7 @@
 #include "esp_log.h"
 
 #define I2C_MASTER_SCL_IO    22 // SCK>D22 VDD>3V3
-#define I2C_MASTER_SDA_IO    21 // SDA>D21 GND>GND
+#define I2C_MASTER_SDA_IO    23 // SDA>D21 GND>GND
 #define I2C_MASTER_NUM       I2C_NUM_0
 #define I2C_MASTER_FREQ_HZ   400000
 #define SSD1306_I2C_ADDRESS  0x3C

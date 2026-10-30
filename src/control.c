@@ -75,7 +75,6 @@ void startCharge(int* CHARGING_STATE){
 void endCharge(int* CHARGING_STATE){
     *CHARGING_STATE = 0;
     pwm_stop();
-    flushBufferToFlash();
 }
 
 void startDischarge(int* DISCHARGING_STATE){
@@ -95,7 +94,7 @@ void endDischarge(int* DISCHARGING_STATE){
     gpio_set_level(DG1_GPIO, 0);
     gpio_set_level(DG2_GPIO, 0);
     gpio_set_level(DG3_GPIO, 0);
-    flushBufferToFlash();
+
 }
 
 void arrangeResistors(float nowVoltage){
@@ -196,7 +195,7 @@ void operationCare(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySele
         }
     }
 
-    if(batterySelected >= 0 && batterySelected < 2){
+    if(*batterySelected >= 0 && *batterySelected < 2){
         if(*DISCHARGING_STATE){
             arrangeResistors(*nowVoltage);
         }
