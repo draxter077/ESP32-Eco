@@ -6,7 +6,9 @@
 #define DG1_GPIO                GPIO_NUM_13 // Libera R paralelo
 #define DG2_GPIO                GPIO_NUM_14 // Libera segundo série
 #define DG3_GPIO                GPIO_NUM_15 // Libera terceiro série
-#define CHARGING_42_GATE_GPIO   GPIO_NUM_19 /* Lê no pino 10 */
+
+//#define CHARGING_42_GATE_GPIO   GPIO_NUM_19 /* Lê no pino 10 */
+#define PWM_GPIO      GPIO_NUM_19
 
 #define DISCHARGING_GATE_GPIO   GPIO_NUM_17 /* Pino 7 */
 #define LED_GPIO                GPIO_NUM_23 /* Pino 9 */
@@ -32,4 +34,4 @@ float calculateVoltage(void);
 int menuSelectBattery(void);
 
 // Seleciona a tensão final da bateria no display
-int menuSelectFinalVoltage(int batterySelected, float nowVoltage);
+float menuSelectFinalVoltage(int batterySelected, float nowVoltage);
