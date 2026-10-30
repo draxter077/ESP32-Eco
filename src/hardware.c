@@ -2,10 +2,24 @@
 #include "display.h"
 #include "config.h"
 
+#include "esp_adc/adc_cali.h"
+#include "esp_adc/adc_cali_scheme.h"
+
+adc_cali_handle_t adc1_cali_handle = NULL;
+static esp_err_t initADCCalibration(void)
+{
+    adc_cali_line_fitting_config_t config = {
+        .unit_id = ADC_UNIT_1,
+        .atten = ADC_ATTEN_DB_12,
+        .bitwidth = ADC_BITWIDTH_DEFAULT,
+    };
+    return adc_cali_create_scheme_line_fitting(&config,&adc1_cali_handle);
+}
+
 adc_oneshot_unit_handle_t adc1_handle = NULL;
 batteryData batteries[2] = {
-    [0] = {"Nancy 42V", 42.0f, 8.0f},
-    [1] = {"Aveiro 12V", 12.0f, 3.0f} /* Avaliar esse terceiro valor*/
+    [0] = {"Nancy 42V", 42.0f, 30.0f},
+    [1] = {"Aveiro 12V", 12.6f, 9.0f} 
 };
 
 /* Corrigir mosfet de carga e FAN*/
@@ -50,28 +64,93 @@ void hardwareInit(void){
     adc_oneshot_config_channel(adc1_handle, CURRENT_GPIO, &adc_config);
     adc_oneshot_config_channel(adc1_handle, POTENCIOMETER_GPIO, &adc_config);
 
+    esp_err_t err = initADCCalibration();
+    if (err != ESP_OK) {
+        printf("Falha na calibracao do ADC");
+        exit(1);
+    }
+
     displayInit();
 }
 
-/* Pegar amostra maior e fazer a media */
-/* Avaliar essa função para o novo modelo */
-float calculateCurrent(void){
+static esp_err_t readAdcAverage(adc_channel_t channel, int samples, float *average)
+{
+    if (adc1_handle == NULL || average == NULL || samples <= 0) {
+        return ESP_ERR_INVALID_STATE;
+    }
+
     int raw = 0;
-    adc_oneshot_read(adc1_handle, CURRENT_GPIO, &raw);
-    const float readValue = 5*(raw/4095.0);
-    return readValue;
+    int64_t sum = 0;
+
+    for (int i = 0; i < samples; ++i) {
+        esp_err_t err = adc_oneshot_read(adc1_handle, channel, &raw);
+        if (err != ESP_OK) {
+            return err;
+        }
+        sum += raw;
+    }
+
+    *average = (float)sum / (float)samples;
+    return ESP_OK;
 }
 
-/* Pegar amostra maior e fazer a media */
-/* Avaliar essa função para o novo modelo */
+#define WCS_ZERO 2.50f
+#define WCS_SENSITIVITY 0.066f
+#define QTD_AMOSTRAS 5
+
+
+float calculateCurrent(void)
+{
+    int raw = 0;
+    int adc_mV = 0;
+    int soma_mV = 0;
+
+
+    for (int i = 0; i < QTD_AMOSTRAS; i++) {
+        esp_err_t err = adc_oneshot_read(adc1_handle,CURRENT_GPIO,&raw);
+
+        if (err != ESP_OK) {
+            return -1.0f;
+        }
+
+        // Converte cada leitura para milivolts 
+        err = adc_cali_raw_to_voltage(adc1_cali_handle,raw,&adc_mV);
+
+        if (err != ESP_OK) {
+            return -1.0f;
+        }
+
+        soma_mV += adc_mV;
+    }
+
+    // Tensão média no pino ADC
+    float tensaoADC = (soma_mV / (float)QTD_AMOSTRAS) / 1000.0f;
+
+    // Recupera a tensão original na saída do WCS1800
+    float tensaoSensor = tensaoADC * 1.5f;
+
+    // Converte a tensão do sensor em corrente
+    float corrente = (tensaoSensor - WCS_ZERO) / WCS_SENSITIVITY;
+
+    return corrente;
+}
+
+
 float calculateVoltage(void){
-    int raw = 0;
-    adc_oneshot_read(adc1_handle, VOLTAGE_GPIO, &raw);
-    const float readValue = 42*(raw/4095.0);
-    return readValue;
+
+    float rawAverage = 0.0f;
+
+    if (readAdcAverage(VOLTAGE_GPIO,QTD_AMOSTRAS, &rawAverage) != ESP_OK) {
+        return -1.0f;
+    }
+
+    const float adcVoltage = (rawAverage / 4095.0f) * 3.3f;
+
+    const float batteryVoltage = adcVoltage * (212.0f/12.0f);
+
+    return batteryVoltage;
 }
 
-/* MUDEI */
 int menuSelectBattery(void){
     int raw = 0;
     esp_err_t err = adc_oneshot_read(adc1_handle,POTENCIOMETER_GPIO,&raw);

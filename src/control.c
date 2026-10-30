@@ -157,10 +157,6 @@ void operationCare(int* CHARGING_STATE, int* DISCHARGING_STATE, int* batterySele
     *nowVoltage = calculateVoltage();
     batteryData b = batteries[*batterySelected];
 
-    int TYPE = 0;
-    if(*batterySelected == 0) TYPE = 42;
-    else if(*batterySelected == 1) TYPE = 12;
-
     saveLogRecord(esp_timer_get_time() - *operationStartTime, *nowCurrent, *nowVoltage);
     displayInOperation(*CHARGING_STATE, *DISCHARGING_STATE, *operationInitialVoltage, *operationFinalVoltage, *nowVoltage, *nowCurrent, *batterySelected);
 
