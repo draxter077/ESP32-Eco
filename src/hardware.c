@@ -1,6 +1,7 @@
 #include "hardware.h"
 #include "display.h"
 #include "config.h"
+#include <math.h>
 
 #include "esp_adc/adc_cali.h"
 #include "esp_adc/adc_cali_scheme.h"
@@ -25,7 +26,7 @@ batteryData batteries[2] = {
 /* Corrigir mosfet de carga e FAN*/
 void hardwareInit(void){
     gpio_config_t out_conf = {
-        .pin_bit_mask = (1ULL<<DISCHARGING_GATE_GPIO) | (1ULL<<CHARGING_42_GATE_GPIO) | 
+        .pin_bit_mask = (1ULL<<DISCHARGING_GATE_GPIO) | 
                         (1ULL<<DG1_GPIO) | (1ULL<<DG2_GPIO) | (1ULL<<DG3_GPIO) |
                         (1ULL<<LED_GPIO),
         .mode = GPIO_MODE_OUTPUT,
@@ -35,7 +36,6 @@ void hardwareInit(void){
     };
     gpio_config(&out_conf);
 
-    gpio_set_level(CHARGING_42_GATE_GPIO, 0);
     gpio_set_level(DISCHARGING_GATE_GPIO, 0);
     gpio_set_level(DG1_GPIO, 0);
     gpio_set_level(DG2_GPIO, 0);
@@ -132,7 +132,7 @@ float calculateCurrent(void)
     // Converte a tensão do sensor em corrente
     float corrente = (tensaoSensor - WCS_ZERO) / WCS_SENSITIVITY;
 
-    return corrente;
+    return fabs(corrente);
 }
 
 
@@ -177,14 +177,16 @@ float menuSelectFinalVoltage(int batterySelected, float nowVoltage){
 
     const batteryData battery = batteries[batterySelected];
     const float ratio = (float)raw / 4095.0f;
-    float selectedVoltage = battery.minVoltage +
-        (battery.maxVoltage - battery.minVoltage) * ratio;
+
+    const float maxAllowedVoltage = battery.maxVoltage * 0.95f;
+
+    float selectedVoltage = battery.minVoltage + (maxAllowedVoltage - battery.minVoltage) * ratio;
 
     if (selectedVoltage < battery.minVoltage){
         selectedVoltage = battery.minVoltage;
     }
-    if (selectedVoltage > battery.maxVoltage){ 
-        selectedVoltage = battery.maxVoltage;
+    if (selectedVoltage > maxAllowedVoltage){ 
+        selectedVoltage = maxAllowedVoltage;
     }
     // No display o valor aparece arredondado, porém é float
     displayFinalVoltageSelect((int)lroundf(selectedVoltage), batterySelected, nowVoltage);

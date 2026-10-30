@@ -14,7 +14,7 @@
 int CHARGING_STATE = 0, DISCHARGING_STATE = 0;
 float nowCurrent = 0, nowVoltage = 0;
 float operationFinalVoltage = 0, operationInitialVoltage = 0;
-int batterySelected = 0;
+int batterySelected = -1;
 int lastEnterBtnState = 0, actualBtnState = 0;
 int64_t lastErrorTime = 0, lastTimeFinish = 0, operationStartTime = 0;
 
@@ -35,10 +35,7 @@ void app_main(void){
         if(CHARGING_STATE || DISCHARGING_STATE){
             nowCurrent = calculateCurrent();
             nowVoltage = calculateVoltage();
-            operationCare(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowCurrent, &nowVoltage, &operationFinalVoltage, &operationInitialVoltage, &operationStartTime, &lastErrorTime, &lastTimeFinish);
-            if(CHARGING_STATE && batterySelected >= 0 && batterySelected < 2){
-                pwm_set_duty(batteries[batterySelected], nowVoltage, nowCurrent);
-        }
+            operationCare(&CHARGING_STATE, &DISCHARGING_STATE, &batterySelected, &nowCurrent, &nowVoltage, &operationFinalVoltage, &operationInitialVoltage, &operationStartTime, &lastErrorTime, &lastTimeFinish);   
     }
 
 
