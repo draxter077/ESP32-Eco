@@ -41,7 +41,7 @@ void pwm_init(void){
     ledc_channel_config(&ch);
 }
 
-/* Corrigir mosfet de carga e FAN */
+
 void emergencyValve(){
     gpio_set_level(DISCHARGING_GATE_GPIO, 0);
     gpio_set_level(CHARGING_42_GATE_GPIO, 0);
@@ -75,7 +75,6 @@ void startDischarge(int* DISCHARGING_STATE){
     gpio_set_level(DISCHARGING_GATE_GPIO, 1);
 }
 
-/* Corrigir FAN */
 void endDischarge(int* DISCHARGING_STATE){
     *DISCHARGING_STATE = 0;
     gpio_set_level(DISCHARGING_GATE_GPIO, 0);

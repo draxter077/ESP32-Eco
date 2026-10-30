@@ -165,22 +165,28 @@ int menuSelectBattery(void){
     return readValue;
 }
 
-/*
-int menuSelectBattery(void){
-    int raw = 0;
-    adc_oneshot_read(adc1_handle, POTENCIOMETER_GPIO, &raw);
-    int readValue = (int) (2-1)*(raw/4095.0);
-    displayBatterySelect(readValue);
-    return readValue;
-}
-*/
+float menuSelectFinalVoltage(int batterySelected, float nowVoltage){
+    if (batterySelected < 0 || batterySelected >= 2 || adc1_handle == NULL) {
+        return NAN;
+    }
 
-/* Melhor retornar um float*/
-int menuSelectFinalVoltage(int batterySelected, float nowVoltage){
     int raw = 0;
-    batteryData b = batteries[batterySelected];
-    adc_oneshot_read(adc1_handle, POTENCIOMETER_GPIO, &raw);
-    int readValue = (int) (b.maxVoltage - b.minVoltage)*(raw/4095.0) + b.minVoltage;
-    displayFinalVoltageSelect(readValue, batterySelected, nowVoltage);
-    return readValue;
+    if (adc_oneshot_read(adc1_handle, POTENCIOMETER_GPIO, &raw) != ESP_OK) {
+        return NAN;
+    }
+
+    const batteryData battery = batteries[batterySelected];
+    const float ratio = (float)raw / 4095.0f;
+    float selectedVoltage = battery.minVoltage +
+        (battery.maxVoltage - battery.minVoltage) * ratio;
+
+    if (selectedVoltage < battery.minVoltage){
+        selectedVoltage = battery.minVoltage;
+    }
+    if (selectedVoltage > battery.maxVoltage){ 
+        selectedVoltage = battery.maxVoltage;
+    }
+    // No display o valor aparece arredondado, porém é float
+    displayFinalVoltageSelect((int)lroundf(selectedVoltage), batterySelected, nowVoltage);
+    return selectedVoltage;
 }
